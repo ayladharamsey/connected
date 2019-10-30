@@ -7,5 +7,22 @@ export const getNewsData = async (countryCode = 'us') => {
         throw new Error('There was an error getting your news data.');
     }
     const data = await response.json();
-    return data.articles
+    const cleanData = await cleanNewsData(data.articles); 
+    return await Promise.all(cleanData)
+}
+
+export const cleanNewsData = async (newsData) => {
+    return await newsData.map(async (result) => {
+        const { author, title, content, description, source, url, urlToImage, publishedAt } = result;
+        return {
+            author,
+            title,
+            content,
+            description,
+            source, 
+            url,
+            urlToImage,
+            publishedAt
+        }
+    })
 }
