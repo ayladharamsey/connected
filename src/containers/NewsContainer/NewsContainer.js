@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { countryReducer } from '../../reducers/countryReducer';
 import { bindActionCreators } from 'redux';
-import { chooseCountry } from '../../actions';
-
-
+import { chooseCountry } from '../../actions/index';
+console.log('choose', chooseCountry)
 
 export class  NewsContainer extends Component {
     constructor() {
@@ -17,33 +15,42 @@ export class  NewsContainer extends Component {
     }
 
     updateCountry = e => {
-        console.log(e.target.name)
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+    
+    handleSubmit = () => {
+        console.log(this.props)
+        const { chooseCountry } = this.props;
+        chooseCountry(this.state);
     }
     
     render () {
         const countries = ['ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn', 
                         'co', 'cu', 'cz', 'de', 'eg', 'fr', 'gb', 'gr', 'hk', 'hu', 'id', 
                         'ie', 'il', 'in', 'it', 'jp', 'kr', 'lt', 'lv', 'ma', 'mx', 'my', 'ng', 'nl', 
-                        'no', 'nz', 'ph', 'pl', 'pt', 'ro', 'rs', 'ru', 'sa', 'se', 'sg', 'si', 'sk', 'th', 'tr', 'tw', 'ua',
-                        'us', 've', 'za'];
+                        'no', 'nz', 'ph', 'pl', 'pt', 'ro', 'rs', 'ru', 'sa', 'se', 'sg', 'si', 'sk', 
+                        'th', 'tr', 'tw', 'ua', 'us', 've', 'za'];
         const options = countries.map(country => {
-            return <option value ={country}>{country}</option>
+            return <option value ={country} key={country}>{country}</option>
         })
 
         return (
             <section>
-                <select name="first-country" onChange={this.updateCountry}>
+                <select name="firstCountry" onChange={this.updateCountry}>
                     <option selected="selected"> Select First Country </option>
                     {options}
                 </select>
-                <select name="second-country" onChange={this.updateCountry}>
+                <select name="secondCountry" onChange={this.updateCountry}>
                     <option selected="selected"> Select Second Country </option>
                     {options}
                 </select>
-                <select name="third-country" onChange={this.updateCountry}>
+                <select name="thirdCountry" onChange={this.updateCountry}>
                     <option selected="selected"> Select Third Country </option>
                     {options}
                 </select>
+                <button onClick={this.handleSubmit}>Submit</button>
             </section>
         )
     }

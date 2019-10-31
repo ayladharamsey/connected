@@ -1,7 +1,8 @@
-export const countryReducer = (state = 'Select Country Here', action) => {
+export const countryReducer = (state = {}, action) => {
+    console.log('action', action)
     switch(action.type) {
         case 'CHOOSE_COUNTRY':
-            return action.chosenCountry;
+            return action;
         default: 
             return state;
     }

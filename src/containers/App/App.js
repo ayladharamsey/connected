@@ -2,15 +2,9 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { getNewsData } from '../../apiCalls';
 import { 
-  selectNav,
-  saveArticle,
-  unsaveArticle,
-  readArticle,
-  unreadArticle,
   setLoader,
   setNewsData,
-  hasError,
-  chooseCountry 
+  hasError
 } from '../../actions/index'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -44,9 +38,6 @@ class App extends Component {
       }
   }
 
-  filterByCountry = (chosen = 'en') => {
-    
-  }
 
   render() {
     return (
@@ -116,24 +107,17 @@ export const mapDispatchToProps = dispatch => (
     setLoader,
     hasError,
     setNewsData,
-    chooseCountry
   }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
-  error: PropTypes.string,
-  favorites: PropTypes.array,
-  language:  PropTypes.string,
-  isLoading: PropTypes.bool,
-  nav: PropTypes.string,
-  read: PropTypes.array,
-  selectNav: PropTypes.func,
-  saveArticle: PropTypes.func,
-  unsaveArticle: PropTypes.func,
-  readArticle: PropTypes.func,
-  unreadArticle: PropTypes.func,
+  error: PropTypes.func,
+  favorites: PropTypes.func,
+  language:  PropTypes.func,
+  isLoading: PropTypes.func,
+  setNewsData: PropTypes.func,
   setLoader: PropTypes.func,
   hasError: PropTypes.func
 }
