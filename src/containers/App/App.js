@@ -22,9 +22,11 @@ import { readReducer } from '../../reducers/readReducer';
 class App extends Component {
 
    componentDidMount= async () => {
+     const { isLoading } = this.props;
     try {
+      isLoading(true);
       const newsData = await getNewsData();
-      return newsData
+      isLoading(false)
     } catch(error) {
       return error.message
     }

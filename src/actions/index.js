@@ -37,3 +37,8 @@ export const hasError = error => {
     type: 'HAS_ERROR',
     error
 }
+
+export const setNewsData = data => {
+    type: 'SET_DATA',
+    data
+}
