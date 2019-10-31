@@ -8,7 +8,9 @@ import {
   readArticle,
   unreadArticle,
   setLoader,
-  hasError } from '../../actions/index'
+  setNewsData,
+  hasError 
+} from '../../actions/index'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
@@ -18,24 +20,27 @@ import { langReducer } from '../../reducers/langReducer';
 import { loadingReducer } from '../../reducers/loadingReducer';
 import { navReducer } from '../../reducers/navReducer';
 import { readReducer } from '../../reducers/readReducer';
+import { newsDataReducer } from '../../reducers/newsDataReducer';
 
 class App extends Component {
 
    componentDidMount= async () => {
-     const { isLoading } = this.props;
-    try {
-      isLoading(true);
-      const newsData = await getNewsData();
-      isLoading(false)
-    } catch(error) {
-      return error.message
-    }
+     const { setLoader, setNewsData, hasError } = this.props;
+      try {
+        setLoader(true);
+        const newsData = await getNewsData();
+        setNewsData(newsData);
+        setLoader(false)
+      } catch(error) {
+        hasError(error.message)
+        setLoader(false) // do i need this?
+      }
   }
 
   render() {
     return (
       <main>
-
+        
       </main>
 
     )
@@ -48,18 +53,15 @@ export const mapStateToProps = state => ({
   language: langReducer,
   isLoading: loadingReducer,
   nav: navReducer,
-  read: readReducer
+  read: readReducer,
+  data: newsDataReducer
 })
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    selectNav,
-    saveArticle,
-    unsaveArticle,
-    readArticle,
-    unreadArticle,
     setLoader,
-    hasError
+    hasError,
+    setNewsData
   }, dispatch)
 )
 

@@ -5,6 +5,7 @@ import { langReducer } from './langReducer';
 import { loadingReducer } from './loadingReducer';
 import { navReducer } from './navReducer';
 import { readReducer } from './readReducer';
+import { newsDataReducer } from './newsDataReducer';
 
 const rootReducer = combineReducers({
     errorReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     langReducer,
     loadingReducer,
     navReducer,
-    readReducer
+    readReducer,
+    newsDataReducer
 })
 
 export default rootReducer;

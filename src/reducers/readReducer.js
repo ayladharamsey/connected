@@ -6,5 +6,7 @@ export const readReducer = (state = [], action) => {
         case 'READ_ARTICLE' :
             const readArticles =  action.articles.map(article => action.isRead = !action.isRead);
             return readArticles.map(article => localStorage.setItem( 'article', JSON.stringify(article)))
+        default:
+            return state;
     }
 }

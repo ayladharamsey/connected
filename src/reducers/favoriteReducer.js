@@ -6,5 +6,7 @@ export const favoriteReducer = (state = [], action) => {
         case 'SAVE_ARTICLE' :
             const savedArticles =  action.articles.map(article => action.isSaved = !action.isSaved);
             return savedArticles.map(article => localStorage.setItem( 'article', JSON.stringify(article)))
+        default:
+            return state;
     }
 }
