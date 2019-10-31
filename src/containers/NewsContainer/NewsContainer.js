@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { chooseCountry } from '../../actions/index';
-console.log('choose', chooseCountry)
 
 export class  NewsContainer extends Component {
     constructor() {
