@@ -21,6 +21,11 @@ import { loadingReducer } from '../../reducers/loadingReducer';
 import { navReducer } from '../../reducers/navReducer';
 import { readReducer } from '../../reducers/readReducer';
 import { newsDataReducer } from '../../reducers/newsDataReducer';
+import { Nav } from '../Nav/Nav';
+import { NewsContainer } from '../NewsContainer/NewsContainer';
+import { Stats } from '../Stats/Stats';
+import { NewsCard } from '../NewsCard/NewsCard';
+
 
 class App extends Component {
 
@@ -46,7 +51,7 @@ class App extends Component {
             return (
               <>
                 <Nav/>
-                <NewsContianer />
+                <NewsContainer />
               </>
             )
           }}
@@ -57,7 +62,7 @@ class App extends Component {
             return (
               <>
                 <Nav/>
-                <NewsContianer />
+                <NewsContainer />
               </>
             )
           }}
@@ -68,7 +73,7 @@ class App extends Component {
             return (
               <>
                 <Nav/>
-                <NewsContianer />
+                <NewsContainer />
               </>
             )
           }}
