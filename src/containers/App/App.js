@@ -19,8 +19,6 @@ import { loadingReducer } from '../../reducers/loadingReducer';
 import { navReducer } from '../../reducers/navReducer';
 import { readReducer } from '../../reducers/readReducer';
 
-
-
 class App extends Component {
 
    componentDidMount= async () => {
