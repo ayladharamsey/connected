@@ -33,7 +33,7 @@ export const setLoader = bool => {
     bool
 }
 
-export const hasError => error => {
+export const hasError = error => {
     type: 'HAS_ERROR',
     error
 }

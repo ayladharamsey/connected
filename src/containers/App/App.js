@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { getNewsData } from '../../apiCalls'
+import { Route } from 'react-router-dom';
+import { getNewsData } from '../../apiCalls';
+import * as actions from '../../actions/index';
+
 
 class App extends Component {
   constructor() {
