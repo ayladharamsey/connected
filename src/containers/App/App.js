@@ -20,6 +20,7 @@ import { navReducer } from '../../reducers/navReducer';
 import { readReducer } from '../../reducers/readReducer';
 
 
+
 class App extends Component {
 
    componentDidMount= async () => {
@@ -63,3 +64,19 @@ export const mapDispatchToProps = dispatch => (
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  error: PropTypes.string,
+  favorites: PropTypes.array,
+  language:  PropTypes.string,
+  isLoading: PropTypes.bool,
+  nav: PropTypes.string,
+  read: PropTypes.array,
+  selectNav: PropTypes.func,
+  saveArticle: PropTypes.func,
+  unsaveArticle: PropTypes.func,
+  readArticle: PropTypes.func,
+  unreadArticle: PropTypes.func,
+  setLoader: PropTypes.func,
+  hasError: PropTypes.func
+}
