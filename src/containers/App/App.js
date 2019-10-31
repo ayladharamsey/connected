@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getNewsData } from './apiCalls'
+import { getNewsData } from '../../apiCalls'
 
 class App extends Component {
   constructor() {
@@ -9,10 +9,9 @@ class App extends Component {
    componentDidMount= async () => {
     try {
       const newsData = await getNewsData();
-      console.log(newsData)
+      return newsData
     } catch(error) {
-      console.log(error.message)
-
+      return error.message
     }
 
   }
