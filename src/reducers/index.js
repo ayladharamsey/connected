@@ -6,6 +6,7 @@ import { loadingReducer } from './loadingReducer';
 import { navReducer } from './navReducer';
 import { readReducer } from './readReducer';
 import { newsDataReducer } from './newsDataReducer';
+import { countryReducer } from './countryReducer'
 
 const rootReducer = combineReducers({
     errorReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     loadingReducer,
     navReducer,
     readReducer,
-    newsDataReducer
+    newsDataReducer,
+    countryReducer
 })
 
 export default rootReducer;

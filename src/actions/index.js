@@ -42,3 +42,8 @@ export const setNewsData = data => ({
     type: 'SET_DATA',
     data
 })
+
+export const chooseCountry = choosenCountry => ({
+    type: 'CHOOSE_COUNTRY',
+    choosenCountry
+})

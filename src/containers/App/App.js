@@ -9,7 +9,8 @@ import {
   unreadArticle,
   setLoader,
   setNewsData,
-  hasError 
+  hasError,
+  chooseCountry 
 } from '../../actions/index'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -21,6 +22,7 @@ import { loadingReducer } from '../../reducers/loadingReducer';
 import { navReducer } from '../../reducers/navReducer';
 import { readReducer } from '../../reducers/readReducer';
 import { newsDataReducer } from '../../reducers/newsDataReducer';
+import { countryReducer } from '../../reducers/countryReducer';
 import { Nav } from '../Nav/Nav';
 import { NewsContainer } from '../NewsContainer/NewsContainer';
 import { Stats } from '../Stats/Stats';
@@ -40,6 +42,10 @@ class App extends Component {
         hasError(error.message)
         setLoader(false) // do i need this?
       }
+  }
+
+  filterByCountry = (chosen = 'en') => {
+    
   }
 
   render() {
@@ -101,14 +107,16 @@ export const mapStateToProps = state => ({
   isLoading: loadingReducer,
   nav: navReducer,
   read: readReducer,
-  data: newsDataReducer
+  data: newsDataReducer,
+  countryOptions: countryReducer
 })
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     setLoader,
     hasError,
-    setNewsData
+    setNewsData,
+    chooseCountry
   }, dispatch)
 )
 
