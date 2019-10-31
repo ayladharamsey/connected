@@ -1,8 +1,7 @@
 export const countryReducer = (state = {}, action) => {
-    console.log('action', action)
     switch(action.type) {
         case 'CHOOSE_COUNTRY':
-            return action;
+            return action.chosenCountries;
         default: 
             return state;
     }

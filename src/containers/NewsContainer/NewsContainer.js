@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { chooseCountry } from '../../actions/index';
+import { chooseCountry, setNewsData } from '../../actions/index';
+import { getNewsData } from '../../apiCalls'
 
 export class  NewsContainer extends Component {
     constructor() {
@@ -20,9 +21,27 @@ export class  NewsContainer extends Component {
     }
     
     handleSubmit = () => {
-        console.log(this.props)
         const { chooseCountry } = this.props;
         chooseCountry(this.state);
+        this.filterNewsData();
+    }
+    
+    filterNewsData = async () => {
+        try {
+            if(this.state.firstCountry){
+                var countryOneData = await getNewsData(this.state.firstCountry);
+            }
+            if(this.state.secondCountry) {
+                var countryTwoData = await getNewsData(this.state.secondCountry);
+            }
+            if(this.state.thirdCountry) {
+                var countryThreeData = await getNewsData(this.state.thirdCountry);
+            }
+            this.props.setNewsData([countryOneData, countryTwoData, countryThreeData])
+        } catch (error) {
+            return error.message
+        }
+
     }
     
     render () {
@@ -61,7 +80,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => (
     bindActionCreators({
-        chooseCountry
+        chooseCountry,
+        setNewsData
     }, dispatch)
 )
 
