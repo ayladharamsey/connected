@@ -71,7 +71,7 @@ class App extends Component {
           render = {() => {
             return (
               <>
-                <Nav/>
+                <Stats/>
                 <NewsCard />
               </>
             )
