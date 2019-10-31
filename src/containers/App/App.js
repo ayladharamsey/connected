@@ -33,9 +33,51 @@ class App extends Component {
   render() {
     return (
       <main>
-
+        <Route
+          path = "/"
+          render = {() => {
+            return (
+              <>
+                <Nav/>
+                <NewsContianer />
+              </>
+            )
+          }}
+        />
+        <Route
+          path = "/saved"
+          render = {() => {
+            return (
+              <>
+                <Nav/>
+                <NewsContianer />
+              </>
+            )
+          }}
+        />
+        <Route
+          path = "/read"
+          render = {() => {
+            return (
+              <>
+                <Nav/>
+                <NewsContianer />
+              </>
+            )
+          }}
+        />
+        <Route
+          path = "/:articleId"
+          render = {() => {
+            return (
+              <>
+                <Stats/>
+                <NewsCard />
+              </>
+            )
+          }}
+        />
       </main>
-
     )
   }
 }
