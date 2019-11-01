@@ -9,14 +9,6 @@ import {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
-import { errorReducer } from '../../reducers/errorReducer';
-import { favoriteReducer } from '../../reducers/favoriteReducer';
-import { langReducer } from '../../reducers/langReducer';
-import { loadingReducer } from '../../reducers/loadingReducer';
-import { navReducer } from '../../reducers/navReducer';
-import { readReducer } from '../../reducers/readReducer';
-import { newsDataReducer } from '../../reducers/newsDataReducer';
-import { countryReducer } from '../../reducers/countryReducer';
 import { Nav } from '../Nav/Nav';
 import NewsContainer from '../NewsContainer/NewsContainer';
 import { Stats } from '../Stats/Stats';
@@ -53,6 +45,7 @@ class App extends Component {
           }}
         />
         <Route
+          exact
           path = "/saved"
           render = {() => {
             return (
@@ -64,6 +57,7 @@ class App extends Component {
           }}
         />
         <Route
+          exact
           path = "/read"
           render = {() => {
             return (
@@ -91,14 +85,14 @@ class App extends Component {
 }
 
 export const mapStateToProps = state => ({
-  error: errorReducer,
-  favorites: favoriteReducer,
-  language: langReducer,
-  isLoading: loadingReducer,
-  nav: navReducer,
-  read: readReducer,
-  data: newsDataReducer,
-  countryOptions: countryReducer
+  error: state.errorReducer,
+  favorites: state.favoriteReducer,
+  language: state.langReducer,
+  isLoading: state.loadingReducer,
+  nav: state.navReducer,
+  read: state.readReducer,
+  data: state.newsDataReducer,
+  countryOptions: state.countryReducer
 })
 
 export const mapDispatchToProps = dispatch => (

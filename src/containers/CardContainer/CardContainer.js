@@ -4,7 +4,7 @@ import NewsCard from '../NewsCard/NewsCard';
 
 export const CardContainer = ({ newsData }) => {
     const card = newsData.map(article => {
-        return <NewsCard 
+        return  <NewsCard 
             key={article.id}
             id={article.id}
             author={article.author}

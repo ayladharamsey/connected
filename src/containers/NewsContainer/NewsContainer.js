@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { chooseCountry, setNewsData } from '../../actions/index';
 import { getNewsData } from '../../apiCalls';
-import CardContainer from '../CardContainer/CardContainer'
+import CardContainer from '../CardContainer/CardContainer';
+
 export class  NewsContainer extends Component {
     constructor() {
         super();

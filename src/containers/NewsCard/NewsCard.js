@@ -9,7 +9,7 @@ const NewsCard = (props) => {
             <h3>{props.title}</h3>
             <h3>{props.content}</h3>
             <p>{props.content}</p>
-            <Redirect to={props.source}><button>Read Article</button></Redirect>
+            <Redirect to={props.url}><button>Read Article</button></Redirect>
          </section>
     )
 }
