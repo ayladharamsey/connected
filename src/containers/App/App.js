@@ -20,7 +20,7 @@ import { countryReducer } from '../../reducers/countryReducer';
 import { Nav } from '../Nav/Nav';
 import NewsContainer from '../NewsContainer/NewsContainer';
 import { Stats } from '../Stats/Stats';
-import { NewsCard } from '../NewsCard/NewsCard';
+import NewsCard from '../NewsCard/NewsCard';
 
 
 class App extends Component {

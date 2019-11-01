@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { chooseCountry, setNewsData } from '../../actions/index';
-import { getNewsData } from '../../apiCalls'
-
+import { getNewsData } from '../../apiCalls';
+import CardContainer from '../CardContainer/CardContainer'
 export class  NewsContainer extends Component {
     constructor() {
         super();
         this.state = {
             firstCountry: '',
             secondCountry: '',
-            thirdCountry: ''
+            thirdCountry: '',
+            firstCountryData: [],
+            secondCountryData: [],
+            thirdCountryData: []
         }
     }
 
@@ -30,14 +33,23 @@ export class  NewsContainer extends Component {
         try {
             if(this.state.firstCountry){
                 var countryOneData = await getNewsData(this.state.firstCountry);
+                this.setState({
+                    firstCountryData: countryOneData
+                })
             }
 
             if(this.state.secondCountry) {
                 var countryTwoData = await getNewsData(this.state.secondCountry);
+                this.setState({
+                    secondCountryData: countryTwoData
+                })
             }
 
             if(this.state.thirdCountry) {
                 var countryThreeData = await getNewsData(this.state.thirdCountry);
+                this.setState({
+                    thirdCountryData: countryThreeData
+                })
             }
 
             this.props.setNewsData([countryOneData, countryTwoData, countryThreeData])
@@ -62,14 +74,17 @@ export class  NewsContainer extends Component {
                     <option selected="selected"> Select First Country </option>
                     {options}
                 </select>
+                <CardContainer newsData={this.state.firstCountryData}/>
                 <select name="secondCountry" onChange={this.updateCountry}>
                     <option selected="selected"> Select Second Country </option>
                     {options}
                 </select>
+                <CardContainer newsData={this.state.secondCountryData} />
                 <select name="thirdCountry" onChange={this.updateCountry}>
                     <option selected="selected"> Select Third Country </option>
                     {options}
                 </select>
+                <CardContainer newsData={this.state.thirdCountryData}/>
                 <button onClick={this.handleSubmit}>Submit</button>
             </section>
         )
