@@ -2,6 +2,9 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 const NewsCard = (props) => {
+    const goToLink = (url) => {
+        return window.open(url)
+    }
     return (
          <section id={props.id} key={props.id}> 
             <h1>{props.title}</h1>
@@ -9,7 +12,7 @@ const NewsCard = (props) => {
             <h3>{props.title}</h3>
             <h3>{props.content}</h3>
             <p>{props.content}</p>
-            <Redirect to={props.url}><button>Read Article</button></Redirect>
+            <button onClick={() => goToLink(props.url)}>Read Article</button>
          </section>
     )
 }

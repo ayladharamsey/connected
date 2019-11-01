@@ -68,17 +68,6 @@ class App extends Component {
             )
           }}
         />
-        <Route
-          path = "/:articleId"
-          render = {() => {
-            return (
-              <>
-                <Stats/>
-                <NewsCard />
-              </>
-            )
-          }}
-        />
       </main>
     )
   }
@@ -106,10 +95,10 @@ export const mapDispatchToProps = dispatch => (
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
-  error: PropTypes.func,
-  favorites: PropTypes.func,
-  language:  PropTypes.func,
-  isLoading: PropTypes.func,
+  error: PropTypes.string,
+  favorites: PropTypes.array,
+  language:  PropTypes.string,
+  isLoading: PropTypes.bool,
   setNewsData: PropTypes.func,
   setLoader: PropTypes.func,
   hasError: PropTypes.func
