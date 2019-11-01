@@ -1,20 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const NewsCard = (props) => {
-    console.log(props)
-    const goToLink = (url) => {
+
+class NewsCard extends Component {
+    goToLink = (url) => {
         return window.open(url)
     }
-    return (
-         <section id={props.id} key={props.id}> 
-            <h1>{props.title}</h1>
-            <h3>{props.author}</h3>
-            <h3>{props.title}</h3>
-            <h3>{props.content}</h3>
-            <p>{props.content}</p>
-            <button onClick={() => goToLink(props.url)}>Read Article</button>
-         </section>
-    )
+
+    toggleSaveArticle = (country, id) => {
+        console.log(country, id)
+        const { data } = this.props;
+        const news = 
+        console.log(news)
+    }
+
+    toggleCompleteArticle = (country, id) => {
+
+    }
+    render() {
+        console.log(this.props)
+        const {id, title, author, content, url, countryCode } = this.props;
+        return (
+            <section id={id} key={id}> 
+               <h1>{title}</h1>
+               <h3>{author}</h3>
+               <p>{content}</p>
+               <button onClick={() => this.goToLink(url)}>Read Article</button>
+               <button onClick={() => this.toggleSaveArticle(countryCode, id)}>Save For Later</button>
+               <button onClick={() => this.toggleCompleteArticle(countryCode, id)}>Mark as Read</button>
+            </section>
+       )
+    }  
 }
 
-export default NewsCard;
+export const mapStateToProps = state => ({
+    favorites: state.favoriteReducer,
+    read: state.readReducer,
+    data: state.newsDataReducer,
+  });
+
+export default connect(mapStateToProps, null)(NewsCard);

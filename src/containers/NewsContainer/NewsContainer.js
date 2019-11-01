@@ -26,7 +26,8 @@ export class  NewsContainer extends Component {
     
     handleSubmit = () => {
         const { chooseCountry } = this.props;
-        chooseCountry(this.state);
+        const countryInfo = [this.state.firstCountry, this.state.secondCountry, this.state.thirdCountry];
+        countryInfo.forEach(country => chooseCountry(country))
         this.filterNewsData();
     }
     

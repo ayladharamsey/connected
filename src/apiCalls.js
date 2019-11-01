@@ -23,7 +23,9 @@ export const cleanNewsData = async (newsData, countryCode) => {
             urlToImage,
             publishedAt,
             id: index,
-            countryCode
+            countryCode,
+            isRead: false,
+            isSavedForLater: false
         }
     })
 }

@@ -11,7 +11,6 @@ import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 import { Nav } from '../Nav/Nav';
 import NewsContainer from '../NewsContainer/NewsContainer';
-import { Stats } from '../Stats/Stats';
 
 
 class App extends Component {
@@ -72,12 +71,9 @@ class App extends Component {
 
 export const mapStateToProps = state => ({
   error: state.errorReducer,
-  favorites: state.favoriteReducer,
   language: state.langReducer,
   isLoading: state.loadingReducer,
   nav: state.navReducer,
-  read: state.readReducer,
-  data: state.newsDataReducer,
   countryOptions: state.countryReducer
 })
 
