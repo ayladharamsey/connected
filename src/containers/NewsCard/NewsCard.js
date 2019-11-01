@@ -1,7 +1,7 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
 const NewsCard = (props) => {
+    console.log(props)
     const goToLink = (url) => {
         return window.open(url)
     }

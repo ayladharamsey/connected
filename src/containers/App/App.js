@@ -12,7 +12,6 @@ import { PropTypes } from 'prop-types';
 import { Nav } from '../Nav/Nav';
 import NewsContainer from '../NewsContainer/NewsContainer';
 import { Stats } from '../Stats/Stats';
-import NewsCard from '../NewsCard/NewsCard';
 
 
 class App extends Component {
@@ -45,7 +44,6 @@ class App extends Component {
           }}
         />
         <Route
-          exact
           path = "/saved"
           render = {() => {
             return (
@@ -57,7 +55,6 @@ class App extends Component {
           }}
         />
         <Route
-          exact
           path = "/read"
           render = {() => {
             return (
