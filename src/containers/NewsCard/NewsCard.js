@@ -1,10 +1,17 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
-export const NewsCard = () => {
+const NewsCard = (props) => {
     return (
-         <article> 
-             
-         </article>
+         <section id={props.id} key={props.id}> 
+            <h1>{props.title}</h1>
+            <h3>{props.author}</h3>
+            <h3>{props.title}</h3>
+            <h3>{props.content}</h3>
+            <p>{props.content}</p>
+            <Redirect to={props.source}><button>Read Article</button></Redirect>
+         </section>
     )
-    
 }
+
+export default NewsCard;
