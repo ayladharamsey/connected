@@ -18,7 +18,7 @@ class NewsCard extends Component {
     }
 
     toggleSaveArticle = (id) => {
-        let currentState = this.state.isSavedForLaters;
+        let currentState = this.state.isSavedForLater;
         this.setState({
             isSavedForLater: !currentState
         })
