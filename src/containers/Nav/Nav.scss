@@ -1,3 +1,15 @@
 nav {
-    grid-area: nav
+    grid-area: nav;
+    background-color: #6B7A8F;
+}
+
+a {
+    text-decoration: none;
+}
+
+h4 {
+    color: #FFFFFF;
+    &:active, &:hover{
+        background-color: #C17538;
+    }
 }

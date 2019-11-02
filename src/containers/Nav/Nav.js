@@ -11,13 +11,13 @@ export const Nav = () => {
             <h1>connected.</h1>
             <h3>your personalized news feed</h3>
             <Link to='/'>
-                <h2>LIVE ARTICLE FEED</h2>
+                <h4>LIVE ARTICLE FEED</h4>
             </Link>
             <Link to='/saved'>
-                <h2>SAVED FOR LATER</h2>
+                <h4>SAVED FOR LATER</h4>
             </Link>
             <Link to='/read'>
-                <h2>ARTICLES COMPLETED</h2>
+                <h4>ARTICLES COMPLETED</h4>
             </Link>
         </nav>
     )
