@@ -73,21 +73,21 @@ export class  NewsContainer extends Component {
 
         return (
             <section className="card-area">
-                <div>
+                <div className="column">
                     <select name="firstCountry" onChange={this.updateCountry}>
                         <option selected="selected"> Select First Country </option>
                         {options}
                     </select>
                     <CardContainer newsData={this.state.firstCountryData}/>
                 </div>
-                <div>
+                <div className="column">
                     <select name="secondCountry" onChange={this.updateCountry}>
                         <option selected="selected"> Select Second Country </option>
                         {options}
                     </select>
                     <CardContainer  newsData={this.state.secondCountryData} />
                 </div>
-                <div>
+                <div className="column">
                     <select name="thirdCountry" onChange={this.updateCountry}>
                         <option selected="selected"> Select Third Country </option>
                         {options}

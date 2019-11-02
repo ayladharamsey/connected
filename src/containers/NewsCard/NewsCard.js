@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { saveArticle, unsaveArticle } from '../../actions/index';
-import './NewsCard';
+import './NewsCard.scss';
 
 
 
@@ -34,8 +34,8 @@ class NewsCard extends Component {
     render() {
         const {id, title, author, content, url } = this.props;
         return (
-            <section id={id} key={id}> 
-               <h1>{title}</h1>
+            <section id={id} key={id} className="card"> 
+               <h4>{title}</h4>
                <h3>{author}</h3>
                <p>{content}</p>
                <button onClick={() => this.goToLink(url)}>Read Article</button>
