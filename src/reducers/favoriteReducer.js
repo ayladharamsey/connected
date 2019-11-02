@@ -1,10 +1,13 @@
 export const favoriteReducer = (state = [], action) => {
+    console.log(action)
     switch(action.type) {
         case 'UNSAVE_ARTICLE' :
-            return localStorage.removeItem(action.article)
+            const found = state.findIndex(article => article.id === action.article.id);
+            console.log(found)
+            console.log(state.slice(found, 1)) 
             case 'SAVE_ARTICLE' :
-                return state.push(action.article)
-                // return localStorage.setItem( 'article', JSON.stringify(action.article))
+                console.log('wow')
+            return [...state, action.article]
         default:
             return state;
     }

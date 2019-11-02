@@ -1,6 +1,6 @@
-export const selectNav = category => ({
+export const selectNav = navName => ({
     type: 'SELECT_NAV',
-    category
+    navName
 });
 
 export const saveArticle = article => ({

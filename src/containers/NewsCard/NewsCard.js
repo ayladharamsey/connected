@@ -19,20 +19,22 @@ class NewsCard extends Component {
         return window.open(url)
     }
 
-    toggleSaveArticle = (id) => {
+    toggleSaveArticle = async (article, country) => {
+        const { data } = this.props;
         let currentState = this.state.isSavedForLater;
-        this.setState({
+        await this.setState({
             isSavedForLater: !currentState
         })
-        console.log( currentState , this.state.isSavedForLater)
-        this.state.isSavedForLater ? saveArticle(id) : unsaveArticle(id);
+        const foundCountry = data.find(info => info[0].countryCode === country);
+        const foundArticle = foundCountry.find(info => info.id === article.id);
+        currentState ? unsaveArticle(foundArticle) : saveArticle(foundArticle);
     }
 
     toggleCompleteArticle = () => {
 
     }
     render() {
-        const {id, title, author, content, url } = this.props;
+        const {id, title, author, content, url, country } = this.props;
         return (
             <section id={id} key={id} className="card"> 
                <h4>{title}</h4>
@@ -41,7 +43,7 @@ class NewsCard extends Component {
                <button onClick={() => this.goToLink(url)}>Read Article</button>
                <button 
                 className={this.state.isSavedForLater ? 'save' : 'unsave'} 
-                onClick={() => this.toggleSaveArticle(id)}
+                onClick={() => this.toggleSaveArticle(this.props, country)}
                 >
                 Save For Later
                 </button>
@@ -57,7 +59,7 @@ class NewsCard extends Component {
 }
 
 export const mapStateToProps = state => ({
-
+    data: state.newsDataReducer
   })
 
 export const mapDispatchToProps = dispatch => (
