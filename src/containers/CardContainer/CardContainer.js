@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import NewsCard from '../NewsCard/NewsCard';
 
 export const CardContainer = ({ newsData }) => {
+    console.log('news', newsData)
     const card = newsData.map(article => {
         return  <NewsCard 
             key={article.id}
@@ -15,6 +16,9 @@ export const CardContainer = ({ newsData }) => {
             url={article.url}
             urlToImage={article.urlToImage}
             publishedAt={article.publishedAt}
+            country={article.countryCode}
+            isRead={article.isRead}
+            isSavedForLater={article.isSavedForLater}
         />
     })
     return (

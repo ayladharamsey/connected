@@ -1,42 +1,67 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { saveArticle, unsaveArticle } from '../../actions/index'
 
 
 class NewsCard extends Component {
+    constructor() {
+        super();
+        this.state = {
+            isSavedForLater: false,
+            isRead: false
+        }
+    }
+
     goToLink = (url) => {
         return window.open(url)
     }
 
-    toggleSaveArticle = (country, id) => {
-        console.log(country, id)
-        const { data } = this.props;
-        const news = 
-        console.log(news)
+    toggleSaveArticle = () => {
+        this.setState({
+            isSavedForLater: !this.state.isSavedForLater
+        })
+        console.log(this.state)
+        this.state.isSavedForLater ? saveArticle() : unsaveArticle();
     }
 
-    toggleCompleteArticle = (country, id) => {
+    toggleCompleteArticle = () => {
 
     }
     render() {
-        console.log(this.props)
-        const {id, title, author, content, url, countryCode } = this.props;
+        const {id, title, author, content, url } = this.props;
         return (
             <section id={id} key={id}> 
                <h1>{title}</h1>
                <h3>{author}</h3>
                <p>{content}</p>
                <button onClick={() => this.goToLink(url)}>Read Article</button>
-               <button onClick={() => this.toggleSaveArticle(countryCode, id)}>Save For Later</button>
-               <button onClick={() => this.toggleCompleteArticle(countryCode, id)}>Mark as Read</button>
+               <button 
+                className={this.state.isSavedForLater ? 'save' : 'unsave'} 
+                onClick={this.toggleSaveArticle}
+                >
+                Save For Later
+                </button>
+               <button 
+                className={this.state.isRead ? 'complete' : 'incomplete'} 
+                onClick={this.toggleCompleteArticle}
+               >
+                Mark as Read
+                </button>
             </section>
        )
     }  
 }
 
 export const mapStateToProps = state => ({
-    favorites: state.favoriteReducer,
-    read: state.readReducer,
-    data: state.newsDataReducer,
-  });
 
-export default connect(mapStateToProps, null)(NewsCard);
+  })
+
+export const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+      saveArticle,
+      unsaveArticle
+    }, dispatch)
+  )
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsCard);

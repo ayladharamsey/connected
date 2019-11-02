@@ -81,7 +81,7 @@ export class  NewsContainer extends Component {
                     <option selected="selected"> Select Second Country </option>
                     {options}
                 </select>
-                <CardContainer newsData={this.state.secondCountryData} />
+                <CardContainer  newsData={this.state.secondCountryData} />
                 <select name="thirdCountry" onChange={this.updateCountry}>
                     <option selected="selected"> Select Third Country </option>
                     {options}
