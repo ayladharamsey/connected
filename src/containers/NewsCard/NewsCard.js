@@ -32,7 +32,6 @@ class NewsCard extends Component {
 
     toggleCompleteArticle = async (article, country) => {
         const { data } = this.props;
-        console.log(data)
         let currentState = this.state.isRead;
         await this.setState({
             isRead: !currentState
