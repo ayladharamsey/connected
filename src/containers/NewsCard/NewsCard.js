@@ -17,12 +17,13 @@ class NewsCard extends Component {
         return window.open(url)
     }
 
-    toggleSaveArticle = () => {
+    toggleSaveArticle = (id) => {
+        let currentState = this.state.isSavedForLaters;
         this.setState({
-            isSavedForLater: !this.state.isSavedForLater
+            isSavedForLater: !currentState
         })
         console.log(this.state)
-        this.state.isSavedForLater ? saveArticle() : unsaveArticle();
+        this.state.isSavedForLater ? saveArticle(id) : unsaveArticle(id);
     }
 
     toggleCompleteArticle = () => {
@@ -38,14 +39,14 @@ class NewsCard extends Component {
                <button onClick={() => this.goToLink(url)}>Read Article</button>
                <button 
                 className={this.state.isSavedForLater ? 'save' : 'unsave'} 
-                onClick={this.toggleSaveArticle}
+                onClick={() => this.toggleSaveArticle(id)}
                 >
                 Save For Later
                 </button>
                <button 
                 className={this.state.isRead ? 'complete' : 'incomplete'} 
-                onClick={this.toggleCompleteArticle}
-               >
+                onClick={this.toggleCompleteArticle(id)}
+                >
                 Mark as Read
                 </button>
             </section>
