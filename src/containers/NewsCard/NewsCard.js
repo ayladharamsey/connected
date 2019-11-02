@@ -24,7 +24,7 @@ class NewsCard extends Component {
         this.setState({
             isSavedForLater: !currentState
         })
-        console.log(this.state)
+        console.log( currentState , this.state.isSavedForLater)
         this.state.isSavedForLater ? saveArticle(id) : unsaveArticle(id);
     }
 
@@ -68,3 +68,5 @@ export const mapDispatchToProps = dispatch => (
   )
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsCard);
+
+//add propTypes

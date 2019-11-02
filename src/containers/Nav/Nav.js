@@ -10,15 +10,15 @@ export const Nav = () => {
         <nav>
             <h1>connected.</h1>
             <h3>your personalized news feed</h3>
-            <div className="links">
+            <div className="links" >
                 <Link to='/'>
-                    <h4>Live Feed</h4>
+                    <h4 className="live" >Live Feed</h4>
                 </Link>
                 <Link to='/saved'>
-                    <h4>Saved For Later</h4>
+                    <h4 className="saved">Saved For Later</h4>
                 </Link>
                 <Link to='/read'>
-                    <h4>Completed Articles</h4>
+                    <h4 className="completed">Completed Articles</h4>
                 </Link>
             </div>
         </nav>

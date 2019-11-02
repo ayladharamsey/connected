@@ -4,7 +4,8 @@ import { getNewsData } from '../../apiCalls';
 import { 
   setLoader,
   setNewsData,
-  hasError
+  hasError, 
+  selectNav
 } from '../../actions/index'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -26,6 +27,15 @@ class App extends Component {
         hasError(error.message)
         setLoader(false) // do i need this?
       }
+  }
+
+  filterByNav = name => {
+    const { completed, savedForLater } = this.props;
+    if(name === 'saved') {
+      return savedForLater
+    } else if(name === 'read') {
+      return completed
+    }
   }
 
   render() {
@@ -74,7 +84,9 @@ export const mapStateToProps = state => ({
   language: state.langReducer,
   isLoading: state.loadingReducer,
   nav: state.navReducer,
-  countryOptions: state.countryReducer
+  countryOptions: state.countryReducer,
+  savedForLater: state.favoriteReducer,
+  completed: state.readReducer
 })
 
 export const mapDispatchToProps = dispatch => (
@@ -82,6 +94,7 @@ export const mapDispatchToProps = dispatch => (
     setLoader,
     hasError,
     setNewsData,
+    selectNav
   }, dispatch)
 )
 
