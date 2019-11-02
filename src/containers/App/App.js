@@ -95,7 +95,7 @@ export const mapStateToProps = state => ({
   language: state.langReducer,
   isLoading: state.loadingReducer,
   navName: state.navReducer,
-  countryOptions: state.countryReducer,
+  country: state.countryReducer,
   savedForLater: state.favoriteReducer,
   completed: state.readReducer
 })

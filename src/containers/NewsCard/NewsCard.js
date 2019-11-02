@@ -27,9 +27,9 @@ class NewsCard extends Component {
         })
         const foundCountry = data.find(info => info[0].countryCode === country);
         const foundArticle = foundCountry.find(info => info.id === article.id);
-        currentState ? unsaveArticle(foundArticle) : saveArticle(foundArticle);
+        this.state.isSavedForLater ? this.props.saveArticle(foundArticle) : this.props.unsaveArticle(foundArticle);
     }
-
+    
     toggleCompleteArticle = () => {
 
     }
@@ -59,7 +59,7 @@ class NewsCard extends Component {
 }
 
 export const mapStateToProps = state => ({
-    data: state.newsDataReducer
+    data : state.newsDataReducer
   })
 
 export const mapDispatchToProps = dispatch => (

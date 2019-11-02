@@ -38,10 +38,9 @@ export const hasError = error => ({
     error
 });
 
-export const setNewsData = (data, countryCode) => ({
+export const setNewsData = (data) => ({
     type: 'SET_DATA',
-    data,
-    countryCode
+    data
 });
 
 export const chooseCountry = chosenCountry => ({
