@@ -5,3 +5,11 @@
     margin-left: 20px;
     margin-top: 30px;
 }
+
+h4 {
+    color: #C17538;
+    &:active, &:hover{
+        background-color: #C17538;
+        color: #FFFFFF;
+    }
+}

@@ -15,12 +15,14 @@ a {
     text-decoration: none;
 }
 
-h4 {
-    color: #FFFFFF;
-    padding: 20px;
-    font-family: 'Playfair Display';
-    font-size: 1.3em;
-    &:active, &:hover{
-        background-color: #C17538;
+.links {
+        h4 {
+            color: #FFFFFF;
+            padding: 20px;
+            font-family: 'Playfair Display';
+            font-size: 1.3em;
+            &:active, &:hover{
+                background-color: #C17538;
+            }
     }
 }
