@@ -1,20 +1,22 @@
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2em;
+    font-size: 3em;
     font-weight: 700;
-    
+    color: #FFFFFF;
+    padding-left: 20px;
+    margin-bottom: 5px;
 }
 
 h3 {
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     font-weight: 400;
+    color: #FFFFFF;
+    margin-top: 3px;
 }
 
 main {
     background-color: #F3F1EC;
     display: grid;
-    grid-template-areas: 
-        "nav" "container" ;
     grid-template-columns: 1fr 3fr;
 }

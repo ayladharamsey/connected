@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NewsCard from '../NewsCard/NewsCard';
-import './CardContainer'
+import './CardContainer.scss'
 
 
 export const CardContainer = ({ newsData }) => {
-    console.log('news', newsData)
     const card = newsData.map(article => {
         return  <NewsCard 
             key={article.id}
@@ -24,7 +23,7 @@ export const CardContainer = ({ newsData }) => {
         />
     })
     return (
-        <section className="CardContainer">
+        <section className="card-container">
             {card}
         </section>
     )

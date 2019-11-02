@@ -1,3 +1,11 @@
-section {
-    grid-area: container
+.card-area {
+    height: 100vh;
+    display: flex;
+    flex-direction: columns;
+    justify-content: space-between;
+    padding: 100px 200px;
+}
+
+button {
+    height: 20px;
 }
