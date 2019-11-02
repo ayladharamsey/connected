@@ -9,18 +9,8 @@ import {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
-import { errorReducer } from '../../reducers/errorReducer';
-import { favoriteReducer } from '../../reducers/favoriteReducer';
-import { langReducer } from '../../reducers/langReducer';
-import { loadingReducer } from '../../reducers/loadingReducer';
-import { navReducer } from '../../reducers/navReducer';
-import { readReducer } from '../../reducers/readReducer';
-import { newsDataReducer } from '../../reducers/newsDataReducer';
-import { countryReducer } from '../../reducers/countryReducer';
 import { Nav } from '../Nav/Nav';
 import NewsContainer from '../NewsContainer/NewsContainer';
-import { Stats } from '../Stats/Stats';
-import NewsCard from '../NewsCard/NewsCard';
 
 
 class App extends Component {
@@ -74,31 +64,17 @@ class App extends Component {
             )
           }}
         />
-        <Route
-          path = "/:articleId"
-          render = {() => {
-            return (
-              <>
-                <Stats/>
-                <NewsCard />
-              </>
-            )
-          }}
-        />
       </main>
     )
   }
 }
 
 export const mapStateToProps = state => ({
-  error: errorReducer,
-  favorites: favoriteReducer,
-  language: langReducer,
-  isLoading: loadingReducer,
-  nav: navReducer,
-  read: readReducer,
-  data: newsDataReducer,
-  countryOptions: countryReducer
+  error: state.errorReducer,
+  language: state.langReducer,
+  isLoading: state.loadingReducer,
+  nav: state.navReducer,
+  countryOptions: state.countryReducer
 })
 
 export const mapDispatchToProps = dispatch => (
@@ -112,10 +88,10 @@ export const mapDispatchToProps = dispatch => (
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
-  error: PropTypes.func,
-  favorites: PropTypes.func,
-  language:  PropTypes.func,
-  isLoading: PropTypes.func,
+  error: PropTypes.string,
+  favorites: PropTypes.array,
+  language:  PropTypes.string,
+  isLoading: PropTypes.bool,
   setNewsData: PropTypes.func,
   setLoader: PropTypes.func,
   hasError: PropTypes.func

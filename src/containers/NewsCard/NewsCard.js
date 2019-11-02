@@ -1,17 +1,68 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { saveArticle, unsaveArticle } from '../../actions/index'
 
-const NewsCard = (props) => {
-    return (
-         <section id={props.id} key={props.id}> 
-            <h1>{props.title}</h1>
-            <h3>{props.author}</h3>
-            <h3>{props.title}</h3>
-            <h3>{props.content}</h3>
-            <p>{props.content}</p>
-            <Redirect to={props.source}><button>Read Article</button></Redirect>
-         </section>
-    )
+
+class NewsCard extends Component {
+    constructor() {
+        super();
+        this.state = {
+            isSavedForLater: false,
+            isRead: false
+        }
+    }
+
+    goToLink = (url) => {
+        return window.open(url)
+    }
+
+    toggleSaveArticle = (id) => {
+        let currentState = this.state.isSavedForLater;
+        this.setState({
+            isSavedForLater: !currentState
+        })
+        console.log(this.state)
+        this.state.isSavedForLater ? saveArticle(id) : unsaveArticle(id);
+    }
+
+    toggleCompleteArticle = () => {
+
+    }
+    render() {
+        const {id, title, author, content, url } = this.props;
+        return (
+            <section id={id} key={id}> 
+               <h1>{title}</h1>
+               <h3>{author}</h3>
+               <p>{content}</p>
+               <button onClick={() => this.goToLink(url)}>Read Article</button>
+               <button 
+                className={this.state.isSavedForLater ? 'save' : 'unsave'} 
+                onClick={() => this.toggleSaveArticle(id)}
+                >
+                Save For Later
+                </button>
+               <button 
+                className={this.state.isRead ? 'complete' : 'incomplete'} 
+                onClick={this.toggleCompleteArticle(id)}
+                >
+                Mark as Read
+                </button>
+            </section>
+       )
+    }  
 }
 
-export default NewsCard;
+export const mapStateToProps = state => ({
+
+  })
+
+export const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+      saveArticle,
+      unsaveArticle
+    }, dispatch)
+  )
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsCard);

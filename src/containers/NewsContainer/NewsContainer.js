@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { chooseCountry, setNewsData } from '../../actions/index';
 import { getNewsData } from '../../apiCalls';
-import CardContainer from '../CardContainer/CardContainer'
+import CardContainer from '../CardContainer/CardContainer';
+
 export class  NewsContainer extends Component {
     constructor() {
         super();
@@ -25,7 +26,8 @@ export class  NewsContainer extends Component {
     
     handleSubmit = () => {
         const { chooseCountry } = this.props;
-        chooseCountry(this.state);
+        const countryInfo = [this.state.firstCountry, this.state.secondCountry, this.state.thirdCountry];
+        countryInfo.forEach(country => chooseCountry(country))
         this.filterNewsData();
     }
     
@@ -79,7 +81,7 @@ export class  NewsContainer extends Component {
                     <option selected="selected"> Select Second Country </option>
                     {options}
                 </select>
-                <CardContainer newsData={this.state.secondCountryData} />
+                <CardContainer  newsData={this.state.secondCountryData} />
                 <select name="thirdCountry" onChange={this.updateCountry}>
                     <option selected="selected"> Select Third Country </option>
                     {options}

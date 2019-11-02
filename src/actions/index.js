@@ -3,24 +3,24 @@ export const selectNav = category => ({
     category
 });
 
-export const saveArticle = articles => ({
+export const saveArticle = article => ({
     type: 'SAVE_ARTICLE',
-    articles
+    article
 });
 
-export const unsaveArticle = articles => ({
+export const unsaveArticle = article => ({
     type: 'UNSAVE_ARTICLE',
-    articles
+    article
 });
 
-export const readArticle = articles => ({
+export const readArticle = article => ({
     type: 'READ_ARTICLE',
-    articles
+    article
 });
 
-export const unreadArticle = articles => ({
+export const unreadArticle = article => ({
     type:'UNREAD_ARTICLE',
-    articles
+    article
 });
 
 export const updateLanguage = lang => ({
@@ -38,12 +38,13 @@ export const hasError = error => ({
     error
 });
 
-export const setNewsData = data => ({
+export const setNewsData = (data, countryCode) => ({
     type: 'SET_DATA',
-    data
+    data,
+    countryCode
 });
 
-export const chooseCountry = chosenCountries => ({
+export const chooseCountry = chosenCountry => ({
     type: 'CHOOSE_COUNTRY',
-    chosenCountries
+    chosenCountry
 });
