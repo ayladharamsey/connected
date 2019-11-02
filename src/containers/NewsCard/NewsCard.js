@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { saveArticle, unsaveArticle } from '../../actions/index';
+import { saveArticle, unsaveArticle, readArticle, unreadArticle } from '../../actions/index';
 import './NewsCard.scss';
 
 
@@ -29,8 +29,17 @@ class NewsCard extends Component {
         const foundArticle = foundCountry.find(info => info.id === article.id);
         this.state.isSavedForLater ? this.props.saveArticle(foundArticle) : this.props.unsaveArticle(foundArticle);
     }
-    
-    toggleCompleteArticle = () => {
+
+    toggleCompleteArticle = async (article, country) => {
+        const { data } = this.props;
+        console.log(data)
+        let currentState = this.state.isRead;
+        await this.setState({
+            isRead: !currentState
+        })
+        const foundCountry = data.find(info => info[0].countryCode === country);
+        const foundArticle = foundCountry.find(info => info.id === article.id);
+        this.state.isRead ? this.props.readArticle(foundArticle) : this.props.unreadArticle(foundArticle);
 
     }
     render() {
@@ -49,7 +58,7 @@ class NewsCard extends Component {
                 </button>
                <button 
                 className={this.state.isRead ? 'complete' : 'incomplete'} 
-                onClick={this.toggleCompleteArticle(id)}
+                onClick={() => this.toggleCompleteArticle(this.props, country)}
                 >
                 Mark as Read
                 </button>
@@ -65,7 +74,9 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => (
     bindActionCreators({
       saveArticle,
-      unsaveArticle
+      unsaveArticle,
+      readArticle,
+      unreadArticle
     }, dispatch)
   )
 
