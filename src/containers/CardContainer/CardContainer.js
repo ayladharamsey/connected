@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NewsCard from '../NewsCard/NewsCard';
+import './CardContainer'
+
 
 export const CardContainer = ({ newsData }) => {
     console.log('news', newsData)

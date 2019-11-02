@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { saveArticle, unsaveArticle } from '../../actions/index'
+import { saveArticle, unsaveArticle } from '../../actions/index';
+import './NewsCard';
+
 
 
 class NewsCard extends Component {

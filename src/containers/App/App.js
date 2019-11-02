@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 import { Nav } from '../Nav/Nav';
 import NewsContainer from '../NewsContainer/NewsContainer';
-
+import './App.scss'
 
 class App extends Component {
 

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { chooseCountry, setNewsData } from '../../actions/index';
 import { getNewsData } from '../../apiCalls';
 import CardContainer from '../CardContainer/CardContainer';
+import './NewsContainer'
 
 export class  NewsContainer extends Component {
     constructor() {

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './Nav.scss';
+
  
 
 export const Nav = () => {
@@ -7,7 +9,7 @@ export const Nav = () => {
     return (
         <nav>
             <h1>connected.</h1>
-            <h6>your personalized news feed</h6>
+            <h3>your personalized news feed</h3>
             <Link to='/'>
                 <h2>LIVE ARTICLE FEED</h2>
             </Link>
