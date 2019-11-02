@@ -41,6 +41,7 @@ class NewsCard extends Component {
         this.state.isRead ? this.props.readArticle(foundArticle) : this.props.unreadArticle(foundArticle);
 
     }
+    
     render() {
         const {id, title, author, content, url, country } = this.props;
         return (

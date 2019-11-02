@@ -35,18 +35,18 @@ class App extends Component {
       }
   }
 
-  filterByNav = () => {
-    const { completed, savedForLater, navName } = this.props;
-    if(navName === 'saved') {
-      this.setState({
+  filterByNav = (e) => {
+    const { completed, savedForLater} = this.props;
+    const name = e.target.className;
+    if(name === 'saved') {
+      return this.setState({
         data: savedForLater
       })
-    } else if(navName === 'read') {
-      this.setState({
+    } else if(name === 'read') {
+      return this.setState({
         data: completed
       })
     }
-
   }
 
   render() {
@@ -57,7 +57,7 @@ class App extends Component {
           render = {() => {
             return (
               <>
-                <Nav/>
+                <Nav filterByNav={this.filterByNav}/>
                 <NewsContainer />
               </>
             )
@@ -68,7 +68,7 @@ class App extends Component {
           render = {() => {
             return (
               <>
-                <Nav/>
+                <Nav filterByNav={this.filterByNav}/>
                 <NewsContainer data={this.state.data} />
               </>
             )
@@ -79,7 +79,7 @@ class App extends Component {
           render = {() => {
             return (
               <>
-                <Nav/>
+                <Nav filterByNav={this.filterByNav}/>
                 <NewsContainer data={this.state.data}/>
               </>
             )
@@ -94,7 +94,6 @@ export const mapStateToProps = state => ({
   error: state.errorReducer,
   language: state.langReducer,
   isLoading: state.loadingReducer,
-  navName: state.navReducer,
   country: state.countryReducer,
   savedForLater: state.favoriteReducer,
   completed: state.readReducer
