@@ -110,7 +110,7 @@ export class  NewsContainer extends Component {
                     </select>
                     <CardContainer column={2} newsData={ nav ? this.checkNavData(nav, 2) : this.state.thirdCountryData}/>
                 </div>
-                <button onClick={this.handleSubmit}>Submit</button>
+                <button onClick={this.handleSubmit}>Search</button>
             </section>
         )
     }
