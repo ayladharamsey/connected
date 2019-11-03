@@ -62,12 +62,14 @@ export class  NewsContainer extends Component {
     }
 
     checkNavData = (navStatus, country) => {
-        const { favorites, completed } = this.props;
+        const { favorites, completed, newsData } = this.props;
         let data;
         if (navStatus === 'saved') {
             data = favorites ? favorites.filter(favorite => favorite.column === country) : null;
-        } else if(navStatus === 'completed'){
+        } else if(navStatus === 'completed') {
             data =  completed ? completed.filter(complete => complete.column === country) : null;
+        } else if(navStatus === 'live') {
+            data = newsData
         }
         return data
     }
@@ -78,6 +80,7 @@ export class  NewsContainer extends Component {
                         'ie', 'il', 'in', 'it', 'jp', 'kr', 'lt', 'lv', 'ma', 'mx', 'my', 'ng', 'nl', 
                         'no', 'nz', 'ph', 'pl', 'pt', 'ro', 'rs', 'ru', 'sa', 'se', 'sg', 'si', 'sk', 
                         'th', 'tr', 'tw', 'ua', 'us', 've', 'za'];
+
         const options = countries.map(country => {
             return <option value ={country} key={country}>{country}</option>
         })
@@ -117,7 +120,8 @@ export const mapStateToProps = state => ({
     countryOptions: state.countryReducer,
     nav: state.navReducer,
     favorites: state.favoriteReducer,
-    completed: state.readReducer
+    completed: state.readReducer,
+    newsData : state.newsDataReducer
 })
 
 export const mapDispatchToProps = dispatch => (

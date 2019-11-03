@@ -38,6 +38,8 @@ class App extends Component {
       selectNav('saved')
     } else if(name === 'completed') {
       selectNav('completed')
+    } else if(name ==='live') {
+      selectNav('live')
     }
   }
 

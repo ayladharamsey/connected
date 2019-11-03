@@ -9,7 +9,7 @@ export const Nav = ({ filterByNav }) => {
             <h1>connected.</h1>
             <h3>your personalized news feed</h3>
             <div className="links" >
-                <Link to='/' >
+                <Link to='/' onClick ={filterByNav}>
                     <h4 className="live" >Live Feed</h4>
                 </Link>
                 <Link to='/saved' onClick ={filterByNav}>
