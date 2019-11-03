@@ -24,8 +24,8 @@ export const cleanNewsData = async (newsData, countryCode) => {
             publishedAt,
             id: index,
             countryCode,
-            isRead: false,
-            isSavedForLater: false
+            // isRead: false,
+            // isSavedForLater: false
         }
     })
 }
