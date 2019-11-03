@@ -17,46 +17,47 @@ class NewsCard extends Component {
         return window.open(url)
     }
 
-    toggleSaveArticle = async (article, country, e) => {
-        console.log(e.target.parentNode.parentNode)
+    toggleSaveArticle = async (article, country, column) => {
         const { data } = this.props;
         let currentState = this.state.isSavedForLater;
         await this.setState({
             isSavedForLater: !currentState
         })
         const foundCountry = data.find(info => info[0].countryCode === country);
-        const foundArticle = foundCountry.find(info => info.id === article.id);
+        let foundArticle = foundCountry.find(info => info.id === article.id);
+        foundArticle.column = column
         this.state.isSavedForLater ? this.props.saveArticle(foundArticle) : this.props.unsaveArticle(foundArticle);
     }
 
-    toggleCompleteArticle = async (article, country) => {
+    toggleCompleteArticle = async (article, country, column) => {
         const { data } = this.props;
         let currentState = this.state.isRead;
         await this.setState({
             isRead: !currentState
         })
         const foundCountry = data.find(info => info[0].countryCode === country);
-        const foundArticle = foundCountry.find(info => info.id === article.id);
+        let foundArticle = foundCountry.find(info => info.id === article.id);
+        foundArticle.column = column
         this.state.isRead ? this.props.readArticle(foundArticle) : this.props.unreadArticle(foundArticle);
     }
      
     render() {
         const {id, title, author, content, url, country, column } = this.props;
         return (
-            <section column={column} id={id} key={id} className="card"> 
+            <section id={id} key={id} className="card"> 
                <h4>{title}</h4>
                <h3>{author}</h3>
                <p>{content}</p>
                <button onClick={() => this.goToLink(url)}>Read Article</button>
                <button 
                 className={this.state.isSavedForLater ? 'save' : 'unsave'} 
-                onClick={(e) => this.toggleSaveArticle(this.props, country, e)}
+                onClick={() => this.toggleSaveArticle(this.props, country, column)}
                 >
                 Save For Later
                 </button>
                <button 
                 className={this.state.isRead ? 'complete' : 'incomplete'} 
-                onClick={() => this.toggleCompleteArticle(this.props, country)}
+                onClick={() => this.toggleCompleteArticle(this.props, country, column)}
                 >
                 Mark as Read
                 </button>

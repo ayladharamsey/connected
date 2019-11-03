@@ -32,10 +32,12 @@ class App extends Component {
   filterByNav = (e) => {
     const { selectNav } = this.props;
     const name = e.target.className;
+
+    console.log(name)
     if(name === 'saved') {
       selectNav('saved')
-    } else if(name === 'read') {
-      selectNav('read')
+    } else if(name === 'completed') {
+      selectNav('completed')
     }
   }
 
