@@ -48,6 +48,7 @@ class NewsCard extends Component {
      
     render() {
         const {id, title, content, url, country, column, data } = this.props;
+
         return (
             <section id={id} key={id} className="card"> 
                 <div className="top">
@@ -82,7 +83,7 @@ class NewsCard extends Component {
 }
 
 export const mapStateToProps = state => ({
-    data : state.newsDataReducer
+    data: state.newsDataReducer
   })
 
 export const mapDispatchToProps = dispatch => (
