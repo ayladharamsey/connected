@@ -60,6 +60,16 @@ export class  NewsContainer extends Component {
             return error.message
         }
     }
+
+    checkNavData = (navStatus, country) => {
+        const { favorites, completed } = this.props;
+        if (navStatus === 'saved') {
+            console.log(favorites)
+            return favorites[country]
+        } else if(navStatus === 'read'){
+            return completed[country]
+        }
+    }
     
     render () {
         const countries = ['ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn', 
@@ -70,6 +80,8 @@ export class  NewsContainer extends Component {
         const options = countries.map(country => {
             return <option value ={country} key={country}>{country}</option>
         })
+        
+        const { nav } = this.props;
 
         return (
             <section className="card-area">
@@ -78,21 +90,21 @@ export class  NewsContainer extends Component {
                         <option selected="selected"> Select First Country </option>
                         {options}
                     </select>
-                    <CardContainer newsData={this.state.firstCountryData}/>
+                    <CardContainer column={0} newsData={ nav ? this.checkNavData(nav, 0) : this.state.firstCountryData}/>
                 </div>
                 <div className="column">
                     <select name="secondCountry" onChange={this.updateCountry}>
                         <option selected="selected"> Select Second Country </option>
                         {options}
                     </select>
-                    <CardContainer  newsData={this.state.secondCountryData} />
+                    <CardContainer column={1} newsData={ nav ? this.checkNavData(nav, 1) : this.state.secondCountryData} />
                 </div>
                 <div className="column">
                     <select name="thirdCountry" onChange={this.updateCountry}>
                         <option selected="selected"> Select Third Country </option>
                         {options}
                     </select>
-                    <CardContainer newsData={this.state.thirdCountryData}/>
+                    <CardContainer column={2} newsData={ nav ? this.checkNavData(nav, 2) : this.state.thirdCountryData}/>
                 </div>
                 <button onClick={this.handleSubmit}>Submit</button>
             </section>
@@ -101,7 +113,10 @@ export class  NewsContainer extends Component {
 }
 
 export const mapStateToProps = state => ({
-    countryOptions: state.countryReducer
+    countryOptions: state.countryReducer,
+    nav: state.navReducer,
+    favorites: state.favoriteRedcuer,
+    completed: state.completedReducer
 })
 
 export const mapDispatchToProps = dispatch => (

@@ -4,7 +4,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import './CardContainer.scss'
 
 
-export const CardContainer = ({ newsData }) => {
+export const CardContainer = ({ column, newsData }) => {
     const card = newsData.map(article => {
         return  <NewsCard 
             key={article.id}
@@ -20,6 +20,7 @@ export const CardContainer = ({ newsData }) => {
             country={article.countryCode}
             isRead={article.isRead}
             isSavedForLater={article.isSavedForLater}
+            column={column}
         />
     })
     return (
@@ -30,7 +31,9 @@ export const CardContainer = ({ newsData }) => {
 }
 
 export const mapStateToProps = state => ({
-    nav: state.navReducer
+    nav: state.navReducer,
+    favorites: state.favoritesReducer,
+    completed: state.readReducer
 })
 
 export default connect(mapStateToProps, null)(CardContainer);

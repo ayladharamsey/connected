@@ -1,4 +1,5 @@
 export const favoriteReducer = (state = [], action) => {
+    console.log(action)
     switch(action.type) {
         case 'UNSAVE_ARTICLE' :
             const found =  state.findIndex(article => article.id === action.article.id);

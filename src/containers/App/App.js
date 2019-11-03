@@ -15,12 +15,6 @@ import NewsContainer from '../NewsContainer/NewsContainer';
 import './App.scss'
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data : []
-    }
-  }
 
    componentDidMount= async () => {
      const { setLoader, setNewsData, hasError } = this.props;
@@ -36,16 +30,12 @@ class App extends Component {
   }
 
   filterByNav = (e) => {
-    const { completed, savedForLater} = this.props;
+    const { selectNav } = this.props;
     const name = e.target.className;
     if(name === 'saved') {
-      return this.setState({
-        data: savedForLater
-      })
+      selectNav('saved')
     } else if(name === 'read') {
-      return this.setState({
-        data: completed
-      })
+      selectNav('read')
     }
   }
 
@@ -69,7 +59,7 @@ class App extends Component {
             return (
               <>
                 <Nav filterByNav={this.filterByNav}/>
-                <NewsContainer data={this.state.data} />
+                <NewsContainer />
               </>
             )
           }}
@@ -80,7 +70,7 @@ class App extends Component {
             return (
               <>
                 <Nav filterByNav={this.filterByNav}/>
-                <NewsContainer data={this.state.data}/>
+                <NewsContainer />
               </>
             )
           }}
@@ -95,8 +85,6 @@ export const mapStateToProps = state => ({
   language: state.langReducer,
   isLoading: state.loadingReducer,
   country: state.countryReducer,
-  savedForLater: state.favoriteReducer,
-  completed: state.readReducer
 })
 
 export const mapDispatchToProps = dispatch => (
