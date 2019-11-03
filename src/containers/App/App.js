@@ -29,15 +29,15 @@ class App extends Component {
       }
   }
 
-  filterByNav = async (e) => {
+  filterByNav = (e) => {
     const { selectNav } = this.props;
     const name = e.target.className;
-    if(name === 'saved') {
-      await selectNav('saved')
-    } else if(name === 'completed') {
-      await selectNav('completed')
-    } else if(name ==='live') {
-      await selectNav('live')
+    if(name && name === 'saved') {
+       selectNav('saved')
+    } else if(name && name === 'completed') {
+       selectNav('completed')
+    } else if(name && name ==='live') {
+       selectNav('live')
     }
   }
 

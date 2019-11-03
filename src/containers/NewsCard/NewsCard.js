@@ -31,7 +31,7 @@ class NewsCard extends Component {
         const foundCountry = data.find(info => info[0].countryCode === country);
         let foundArticle = foundCountry.find(info => info.id === article.id);
         foundArticle.column = column
-        this.state.isSavedForLater ? this.props.saveArticle(foundArticle) : this.props.unsaveArticle(foundArticle);
+        this.state.isSavedForLater ? await this.props.saveArticle(foundArticle) : await this.props.unsaveArticle(foundArticle);
     }
 
     toggleCompleteArticle = async (article, country, column) => {
@@ -47,7 +47,9 @@ class NewsCard extends Component {
     }
      
     render() {
-        const {id, title, content, url, country, column, data } = this.props;
+        const {id, title, content, url, country, column, favorites, completed } = this.props;
+        let faveArticle;
+        let readArticle;
 
         return (
             <section id={id} key={id} className="card"> 
@@ -67,13 +69,16 @@ class NewsCard extends Component {
                     <div className="right">
                         <img
                             className='saveBtn'
-                            onClick={() => this.toggleSaveArticle(this.props, country, column)}
-                            src={this.state.isSavedForLater ? save : unsave }
+                            onClick={(e) => {
+                                this.toggleSaveArticle(this.props, country, column)
+                                determineArticle(id, column)
+                            }}
+                            src={faveArticle ? save : unsave }
                         />
                         <img 
                             className='completeBtn' 
                             onClick={() => this.toggleCompleteArticle(this.props, country, column)}
-                            src={this.state.isRead ? read : unread }
+                            src={readArticle ? read : unread }
                         />
                     </div>
                 </div>
@@ -83,7 +88,9 @@ class NewsCard extends Component {
 }
 
 export const mapStateToProps = state => ({
-    data: state.newsDataReducer
+    data: state.newsDataReducer,
+    favorites: state.favoriteReducer,
+    completed: state.readReducer
   })
 
 export const mapDispatchToProps = dispatch => (
