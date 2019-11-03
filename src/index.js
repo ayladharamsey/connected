@@ -8,12 +8,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from '../src/containers/App/App';
 import * as serviceWorker from './serviceWorker';
-import { submitState, storeState } from './localStorage' 
+import { loadState, saveState } from './localStorage' 
 
-const store = createStore(rootReducer, submitState(), composeWithDevTools());
+const store = createStore(rootReducer, loadState(), composeWithDevTools());
 
 store.subscribe(() => {
-    storeState({
+    saveState({
         data: store.getState().newsDataReducer,
         favorites: store.getState().favoriteReducer,
         completed: store.getState().readReducer

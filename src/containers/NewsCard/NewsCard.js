@@ -48,8 +48,6 @@ class NewsCard extends Component {
      
     render() {
         const {id, title, content, url, country, column, data } = this.props;
-        const info = `data[column].{id}` ? data[column][id].isSavedForLater : 'ouch';
-        console.log(info)
         return (
             <section id={id} key={id} className="card"> 
                 <div className="top">

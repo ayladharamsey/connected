@@ -1,20 +1,20 @@
-export const submitState = () => {
-    try {
-      const storableState = localStorage.getItem('state');
-      if (storableState === null) {
-        return undefined;
-      }
-      return JSON.parse(storableState);
-    } catch (error) {
+export const loadState = () => {
+  try {
+    const stringifiedState = localStorage.getItem('state');
+    if (stringifiedState === null) {
       return undefined;
     }
-  };
+    return JSON.parse(stringifiedState);
+  } catch (error) {
+    return undefined;
+  }
+};
 
-  export const storeState = state => {
-    try {
-      const storableState = JSON.stringify(state);
-      localStorage.setItem('state', storableState);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export const saveState = state => {
+  try {
+    const stringifiedState = JSON.stringify(state);
+    localStorage.setItem('state', stringifiedState);
+  } catch (error) {
+    console.log(error);
+  }
+};
