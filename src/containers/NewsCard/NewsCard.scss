@@ -1,11 +1,11 @@
 .card {
     width: 350px;
     height: 350px;
-    border: 2px solid #6B7A8F; 
+    border: 3px solid #6B7A8F; 
     margin-left: 20px;
     margin-top: 30px;
     &:hover {
-        border: 2px solid #C17538;
+        border: 3px solid #C17538;
     }
 }
 .top {
@@ -16,6 +16,8 @@
 
 .bottom {
     padding: 10px;
+    display: flex;
+    justify-content: space-between
 }
 
 h4 {
@@ -30,6 +32,7 @@ h4 {
 
 .saveBtn {
     height: 30px;
+    margin-right: 5px;
 }
 
 .completeBtn {

@@ -53,25 +53,28 @@ class NewsCard extends Component {
                 <div className="top">
                     <h4>{title}</h4>
                 </div>
+                <p>{content}</p>
                 <div className="bottom">
-                    <p>{content}</p>
-                    <img 
-                        onClick={() => this.goToLink(url)} 
-                        alt='opens link to article'
-                        src={clock}
-                        className='clock'
+                    <div className="left">
+                            <img 
+                            onClick={() => this.goToLink(url)} 
+                            alt='opens link to article'
+                            src={clock}
+                            className='clock'
+                            />
+                    </div>
+                    <div className="right">
+                        <img
+                            className='saveBtn'
+                            onClick={() => this.toggleSaveArticle(this.props, country, column)}
+                            src={this.state.isSavedForLater ? save : unsave }
                         />
-
-                    <img
-                        className='saveBtn'
-                        onClick={() => this.toggleSaveArticle(this.props, country, column)}
-                        src={this.state.isSavedForLater ? save : unsave }
-                    />
-                    <img 
-                        className='completeBtn' 
-                        onClick={() => this.toggleCompleteArticle(this.props, country, column)}
-                        src={this.state.isRead ? read : unread }
-                    />
+                        <img 
+                            className='completeBtn' 
+                            onClick={() => this.toggleCompleteArticle(this.props, country, column)}
+                            src={this.state.isRead ? read : unread }
+                        />
+                    </div>
                 </div>
             </section>
        )
