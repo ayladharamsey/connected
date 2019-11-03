@@ -22,7 +22,7 @@ class NewsCard extends Component {
         return window.open(url)
     }
 
-    toggleSaveArticle = async (article, country, column) => {
+    toggleSaveArticle = async(article, country, column) => {
         const { data } = this.props;
         let currentState = this.state.isSavedForLater;
         await this.setState({
@@ -31,7 +31,7 @@ class NewsCard extends Component {
         const foundCountry = data.find(info => info[0].countryCode === country);
         let foundArticle = foundCountry.find(info => info.id === article.id);
         foundArticle.column = column
-        this.state.isSavedForLater ? await this.props.saveArticle(foundArticle) : await this.props.unsaveArticle(foundArticle);
+        this.state.isSavedForLater ? this.props.saveArticle(foundArticle) : this.props.unsaveArticle(foundArticle);
     }
 
     toggleCompleteArticle = async (article, country, column) => {
@@ -47,9 +47,7 @@ class NewsCard extends Component {
     }
      
     render() {
-        const {id, title, content, url, country, column, favorites, completed } = this.props;
-        let faveArticle;
-        let readArticle;
+        const {id, title, content, url, country, column} = this.props;
 
         return (
             <section id={id} key={id} className="card"> 
@@ -69,10 +67,7 @@ class NewsCard extends Component {
                     <div className="right">
                         <img
                             className='saveBtn'
-                            onClick={(e) => {
-                                this.toggleSaveArticle(this.props, country, column)
-                                determineArticle(id, column)
-                            }}
+                            onClick={() => this.toggleSaveArticle(this.props, country, column)}
                             src={faveArticle ? save : unsave }
                         />
                         <img 
@@ -89,8 +84,6 @@ class NewsCard extends Component {
 
 export const mapStateToProps = state => ({
     data: state.newsDataReducer,
-    favorites: state.favoriteReducer,
-    completed: state.readReducer
   })
 
 export const mapDispatchToProps = dispatch => (
