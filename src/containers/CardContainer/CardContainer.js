@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NewsCard from '../NewsCard/NewsCard';
+import './CardContainer.scss'
 
-export const CardContainer = ({ newsData }) => {
-    console.log('news', newsData)
+
+export const CardContainer = ({ column, newsData }) => {
     const card = newsData.map(article => {
+        console.log(article)
         return  <NewsCard 
             key={article.id}
             id={article.id}
@@ -19,17 +21,20 @@ export const CardContainer = ({ newsData }) => {
             country={article.countryCode}
             isRead={article.isRead}
             isSavedForLater={article.isSavedForLater}
+            column={column}
         />
     })
     return (
-        <section className="CardContainer">
+        <section className="card-container">
             {card}
         </section>
     )
 }
 
 export const mapStateToProps = state => ({
-    nav: state.navReducer
+    nav: state.navReducer,
+    favorites: state.favoritesReducer,
+    completed: state.readReducer
 })
 
 export default connect(mapStateToProps, null)(CardContainer);

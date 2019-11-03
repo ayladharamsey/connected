@@ -1,22 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
- 
+import { Link } from 'react-router-dom';
+import './Nav.scss'; 
 
-export const Nav = () => {
+export const Nav = ({ filterByNav }) => {
     
     return (
         <nav>
             <h1>connected.</h1>
-            <h6>your personalized news feed</h6>
-            <Link to='/'>
-                <h2>LIVE ARTICLE FEED</h2>
-            </Link>
-            <Link to='/saved'>
-                <h2>SAVED FOR LATER</h2>
-            </Link>
-            <Link to='/read'>
-                <h2>ARTICLES COMPLETED</h2>
-            </Link>
+            <h3>your personalized news feed</h3>
+            <div className="links" >
+                <Link to='/' onClick ={filterByNav}>
+                    <h4 className="live" >Live Feed</h4>
+                </Link>
+                <Link to='/saved' onClick ={filterByNav}>
+                    <h4 className="saved">Saved For Later</h4>
+                </Link>
+                <Link to='/read' onClick ={filterByNav}>
+                    <h4 className="completed">Completed Articles</h4>
+                </Link>
+            </div>
         </nav>
     )
 }

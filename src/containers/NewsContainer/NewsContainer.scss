@@ -1,0 +1,37 @@
+.card-area {
+    height: 100vh;
+    display: flex;
+    flex-direction: columns;
+    justify-content: space-between;
+    padding: 30px;
+    font-family: open-sans;
+    font-weight: 500;
+}
+
+button {
+    height: 30px;
+    margin-top: 20px;
+    width: 100px;
+    border: 2px solid #6B7A8F; 
+    border-radius: 5px;
+    background-color: #F3F1EC;
+    color: #6B7A8F;
+    &:hover {
+        background-color: #6B7A8F;
+        color: #FFFFFF;
+    }
+
+}
+
+select {
+    width: 350px;
+    margin: 20px;
+    height: 30px;
+    border: 2px solid #6B7A8F; 
+    color: #6B7A8F;
+    background-color: #F3F1EC;
+}
+
+.column {
+    text-align: center;
+}

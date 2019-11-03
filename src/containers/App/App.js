@@ -4,14 +4,15 @@ import { getNewsData } from '../../apiCalls';
 import { 
   setLoader,
   setNewsData,
-  hasError
+  hasError, 
+  selectNav
 } from '../../actions/index'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 import { Nav } from '../Nav/Nav';
 import NewsContainer from '../NewsContainer/NewsContainer';
-
+import './App.scss'
 
 class App extends Component {
 
@@ -28,6 +29,20 @@ class App extends Component {
       }
   }
 
+  filterByNav = (e) => {
+    const { selectNav } = this.props;
+    const name = e.target.className;
+
+    console.log(name)
+    if(name === 'saved') {
+      selectNav('saved')
+    } else if(name === 'completed') {
+      selectNav('completed')
+    } else if(name ==='live') {
+      selectNav('live')
+    }
+  }
+
   render() {
     return (
       <main>
@@ -36,7 +51,7 @@ class App extends Component {
           render = {() => {
             return (
               <>
-                <Nav/>
+                <Nav filterByNav={this.filterByNav}/>
                 <NewsContainer />
               </>
             )
@@ -47,7 +62,7 @@ class App extends Component {
           render = {() => {
             return (
               <>
-                <Nav/>
+                <Nav filterByNav={this.filterByNav}/>
                 <NewsContainer />
               </>
             )
@@ -58,7 +73,7 @@ class App extends Component {
           render = {() => {
             return (
               <>
-                <Nav/>
+                <Nav filterByNav={this.filterByNav}/>
                 <NewsContainer />
               </>
             )
@@ -73,8 +88,7 @@ export const mapStateToProps = state => ({
   error: state.errorReducer,
   language: state.langReducer,
   isLoading: state.loadingReducer,
-  nav: state.navReducer,
-  countryOptions: state.countryReducer
+  country: state.countryReducer,
 })
 
 export const mapDispatchToProps = dispatch => (
@@ -82,6 +96,7 @@ export const mapDispatchToProps = dispatch => (
     setLoader,
     hasError,
     setNewsData,
+    selectNav
   }, dispatch)
 )
 

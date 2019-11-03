@@ -1,0 +1,28 @@
+nav {
+    background-color: #6B7A8F;
+    height: 100vh;
+}
+
+h3 {
+    padding-left: 20px;
+}
+
+.links {
+    margin-top: 70px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.links {
+        h4 {
+            color: #FFFFFF;
+            padding: 20px;
+            font-family: 'Playfair Display';
+            font-size: 1.3em;
+            &:active, &:hover{
+                background-color: #C17538;
+            }
+    }
+}

@@ -1,11 +1,10 @@
 export const readReducer = (state = [], action) => {
     switch(action.type) {
         case 'UNREAD_ARTICLE' :
-            const unreadArticles =  action.articles.map(article => article.isRead = !article.isRead);
-            return unreadArticles.map(article => localStorage.removeItem(article));
+            const found =  state.findIndex(article => article.id === action.article.id);
+            return state.splice(found, 1); 
         case 'READ_ARTICLE' :
-            const readArticles =  action.articles.map(article => action.isRead = !action.isRead);
-            return readArticles.map(article => localStorage.setItem( 'article', JSON.stringify(article)))
+            return [...state, action.article]
         default:
             return state;
     }
