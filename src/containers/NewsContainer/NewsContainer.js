@@ -63,13 +63,13 @@ export class  NewsContainer extends Component {
 
     checkNavData = (navStatus, country) => {
         const { favorites, completed, newsData } = this.props;
-        let data;
+        let data = newsData;
         if (navStatus === 'saved') {
             data = favorites ? favorites.filter(favorite => favorite.column === country) : null;
         } else if(navStatus === 'completed') {
             data =  completed ? completed.filter(complete => complete.column === country) : null;
         } else if(navStatus === 'live') {
-            data = newsData
+            data = newsData[country]
         }
         return data
     }
