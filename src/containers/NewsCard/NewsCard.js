@@ -68,12 +68,12 @@ class NewsCard extends Component {
                         <img
                             className='saveBtn'
                             onClick={() => this.toggleSaveArticle(this.props, country, column)}
-                            src={faveArticle ? save : unsave }
+                            src={this.state.isSavedForLater ? save : unsave }
                         />
                         <img 
                             className='completeBtn' 
                             onClick={() => this.toggleCompleteArticle(this.props, country, column)}
-                            src={readArticle ? read : unread }
+                            src={this.state.isRead ? read : unread }
                         />
                     </div>
                 </div>
