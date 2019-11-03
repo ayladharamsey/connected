@@ -18,11 +18,24 @@ a {
 .links {
         h4 {
             color: #FFFFFF;
-            padding: 20px;
             font-family: 'Playfair Display';
-            font-size: 1.3em;
+            font-size: 1.2em;
+            margin-left: 20px;
+        }
+
+        .hover {
+            padding: 10px;
+            display: flex;
+            margin-top: 30px;
             &:active, &:hover{
+                padding: 10px;
                 background-color: #C17538;
             }
-    }
+        }
+
+        img {
+            height: 24px;
+            margin-left: 20px;
+        }
 }
+

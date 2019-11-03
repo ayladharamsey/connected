@@ -6,7 +6,6 @@ import './CardContainer.scss'
 
 export const CardContainer = ({ column, newsData }) => {
     const card = newsData.map(article => {
-        console.log(article)
         return  <NewsCard 
             key={article.id}
             id={article.id}

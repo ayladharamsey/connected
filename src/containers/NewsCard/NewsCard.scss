@@ -1,16 +1,44 @@
 .card {
     width: 350px;
-    height: 400px;
-    border: 2px solid #C17538; 
+    height: 350px;
+    border: 3px solid #6B7A8F; 
     margin-left: 20px;
     margin-top: 30px;
+    &:hover {
+        border: 3px solid #C17538;
+    }
+}
+.top {
+    background-color: #C17538;
+    margin-bottom: 20px;
     padding: 10px;
 }
 
+.bottom {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between
+}
+
 h4 {
-    color: #C17538;
-    &:active, &:hover{
-        background-color: #C17538;
-        color: #FFFFFF;
-    }
+    color: #FFFFFF;
+    font-size: 1.3em;
+}
+
+.clock {
+    height: 30px;
+    width: auto;
+}
+
+.saveBtn {
+    height: 30px;
+    margin-right: 5px;
+}
+
+.completeBtn {
+    height: 30px;
+}
+
+p {
+    padding: 10px;
 }

@@ -22,18 +22,16 @@ class App extends Component {
         setLoader(true);
         const newsData = await getNewsData();
         setNewsData(newsData);
-        setLoader(false)
+        setLoader(false);
       } catch(error) {
-        hasError(error.message)
-        setLoader(false) // do i need this?
+        hasError(error.message);
+        setLoader(false);
       }
   }
 
   filterByNav = (e) => {
     const { selectNav } = this.props;
     const name = e.target.className;
-
-    console.log(name)
     if(name === 'saved') {
       selectNav('saved')
     } else if(name === 'completed') {
