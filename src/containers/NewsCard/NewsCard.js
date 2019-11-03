@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { saveArticle, unsaveArticle, readArticle, unreadArticle } from '../../actions/index';
 import './NewsCard.scss';
+import clock from '../../images/edited/outsource.png';
+import save from '../../images/edited/clock-active.png';
+import unsave from '../../images/edited/clock-inactive.png';
+import read from '../../images/edited/check-active.png';
+import unread from '../../images/edited/check-inactive.png';
 
 class NewsCard extends Component {
     constructor() {
@@ -45,22 +50,29 @@ class NewsCard extends Component {
         const {id, title, author, content, url, country, column } = this.props;
         return (
             <section id={id} key={id} className="card"> 
-               <h4>{title}</h4>
-               <h3>{author}</h3>
-               <p>{content}</p>
-               <button onClick={() => this.goToLink(url)}>Read Article</button>
-               <button 
-                className={this.state.isSavedForLater ? 'save' : 'unsave'} 
-                onClick={() => this.toggleSaveArticle(this.props, country, column)}
-                >
-                Save For Later
-                </button>
-               <button 
-                className={this.state.isRead ? 'complete' : 'incomplete'} 
-                onClick={() => this.toggleCompleteArticle(this.props, country, column)}
-                >
-                Mark as Read
-                </button>
+                <div className="top">
+                    <h4>{title}</h4>
+                </div>
+                <div className="bottom">
+                    <p>{content}</p>
+                    <img 
+                        onClick={() => this.goToLink(url)} 
+                        alt='opens link to article'
+                        src={clock}
+                        className='clock'
+                        />
+
+                    <img
+                        className='saveBtn'
+                        onClick={() => this.toggleSaveArticle(this.props, country, column)}
+                        src={this.state.isSavedForLater ? save : unsave }
+                    />
+                    <img 
+                        className='completeBtn' 
+                        onClick={() => this.toggleCompleteArticle(this.props, country, column)}
+                        src={this.state.isRead ? read : unread }
+                    />
+                </div>
             </section>
        )
     }  
