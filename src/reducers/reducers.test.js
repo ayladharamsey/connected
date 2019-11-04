@@ -44,9 +44,9 @@ describe('chooseArticleReducer', () => {
 
         const mockAction = {
             type: 'CHOOSE_ARTICLE', 
-            column: column,
-            id: id,
-            data: data
+            column,
+            id,
+            data
         };
 
         const mockArticle = {

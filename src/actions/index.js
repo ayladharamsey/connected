@@ -44,7 +44,7 @@ export const chooseCountry = chosenCountry => ({
 });
 
 export const chooseArticle = (column, id, data) => ({
-    type : 'CHOOSE_ARTICLE',
+    type: 'CHOOSE_ARTICLE',
     column,
     id,
     data
