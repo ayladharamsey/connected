@@ -49,36 +49,9 @@ describe('cleanNewsData', () => {
                 countryCode: 'da',
                 logo: 'www.logo.com',
                 details: 'so many details'
-            },
-            {
-                author: 'billy',
-                title: 'i do notwant candy',
-                content: 'you are mean but i like it',
-                description: 'testing is hard but it isnt',
-                source: 'www.uncool.com', 
-                url: 'nope',
-                urlToImage: 'www.uncool.com',
-                publishedAt: 'march 12',
-                id: 1,
-                countryCode: 'po',
-                logo: 'www.logos.com',
-                details: 'so many deets'
-                } 
-        ]
-        const receivedData =
-            {
-            author: 'timmy',
-            title: 'i want candy',
-            content: 'you are mean',
-            description: 'testing is hard',
-            source: 'www.cool.com', 
-            url: 'yup',
-            urlToImage: 'www.cool',
-            publishedAt: 'march 10',
-            id: 0,
-            countryCode: 'da'
             }
-            
-            expect(getNewsData(allData)).resolves.toEqual(receivedData)
+        ]
+        const mockresponse = [{}]
+            expect(cleanNewsData()).resolves.toEqual(mockresponse)
     })
 })
