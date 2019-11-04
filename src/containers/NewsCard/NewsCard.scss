@@ -9,9 +9,12 @@
     }
 }
 .top {
-    background-color: #C17538;
+    background-color:  #6B7A8F;
     margin-bottom: 20px;
     padding: 10px;
+    &:hover {
+        background-color:#C17538;
+    }
 }
 
 .bottom {
