@@ -2,7 +2,6 @@ import { chooseArticleReducer } from './chooseArticleReducer';
 import { countryReducer } from './countryReducer';
 import { errorReducer } from './errorReducer';
 import { favoriteReducer } from './favoriteReducer';
-import { langReducer } from './langReducer';
 import { loadingReducer } from './loadingReducer';
 import { navReducer } from './navReducer';
 import { newsDataReducer } from './newsDataReducer';
@@ -178,5 +177,53 @@ describe('favoriteReducer', () => {
         };
         const result = favoriteReducer(mockState, mockAction);
         expect(result).toEqual([expected]);
+    });
+})
+
+describe('loadingReducer', () => {
+    
+    it('should return the initial state of false', () => {
+        const expected = false;
+        const result = loadingReducer(false, {});
+        expect(result).toEqual(expected);
+      });
+
+    it('should return a boolean when the type is SET_LOADER, if true', () => {
+        const bool = true;
+        const mockAction = {
+            type: 'SET_LOADER', 
+            bool
+        };
+        const result = loadingReducer('', mockAction);
+        expect(result).toEqual(bool);
+    });
+
+    it('should return a boolean when the type is SET_LOADER', () => {
+        const bool = false;
+        const mockAction = {
+            type: 'SET_LOADER', 
+            bool
+        };
+        const result = loadingReducer('', mockAction);
+        expect(result).toEqual(bool);
+    });
+})
+
+describe('navReducer', () => {
+    
+    it('should return the initial state', () => {
+        const expected = '';
+        const result = navReducer(undefined, {});
+        expect(result).toEqual(expected);
+      });
+
+    it('should return a navName when the type is SELECT_NAV', () => {
+        const navName = 'live'
+        const mockAction = {
+            type: 'SELECT_NAV', 
+            navName
+        };
+        const result = navReducer('', mockAction);
+        expect(result).toEqual(navName);
     });
 })

@@ -23,11 +23,6 @@ export const unreadArticle = article => ({
     article
 });
 
-export const updateLanguage = lang => ({
-    type: 'CHOOSE_LANGUAGE',
-    lang
-});
-
 export const setLoader = bool => ({
     type: 'SET_LOADER',
     bool
