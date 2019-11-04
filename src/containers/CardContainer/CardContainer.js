@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NewsCard from '../NewsCard/NewsCard';
-import './CardContainer.scss'
+import './CardContainer.scss';
+import PropTypes from 'prop-types';
 
 
 export const CardContainer = ({ column, newsData }) => {
@@ -38,3 +39,9 @@ export const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, null)(CardContainer);
+
+
+CardContainer.propTypes = {
+    column: PropTypes.number,
+    newsData: PropTypes.array
+}

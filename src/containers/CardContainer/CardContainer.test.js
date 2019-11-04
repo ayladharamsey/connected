@@ -14,5 +14,7 @@ describe('CardContainer', () => {
             column={column}
             newsData={newsData}
         />)
+
+        expect(wrapper).toMatchSnapshot();
     })
 })
