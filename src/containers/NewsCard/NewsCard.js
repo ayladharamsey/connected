@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { saveArticle, unsaveArticle, readArticle, unreadArticle, chooseArticle } from '../../actions/index';
 import './NewsCard.scss';
-import go from '../../images/edited/outsource.png';
 import save from '../../images/edited/clock-active.png';
 import unsave from '../../images/edited/clock-inactive.png';
 import read from '../../images/edited/check-active.png';
