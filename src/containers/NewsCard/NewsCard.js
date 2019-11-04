@@ -50,7 +50,7 @@ export class NewsCard extends Component {
             <section id={id} key={id} className="card"> 
                 <div className="top">
                 <Link to={`/article/${id}`} onClick={() => chooseArticle(id, column, data)}>;
-                    <h4>{title}</h4>
+                    <h4 className="title">{title}</h4>
                 </Link>
 
                 </div>

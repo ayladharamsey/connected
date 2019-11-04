@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './NewsArticle.scss';
 
 export class NewsArticle extends Component {
     

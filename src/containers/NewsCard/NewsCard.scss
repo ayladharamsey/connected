@@ -19,11 +19,11 @@
 
 .bottom {
     padding: 10px;
-    display: flex;
-    justify-content: space-between
+    position: absolute;
+    bottom: 0;
 }
 
-h4 {
+.title {
     color: #FFFFFF;
     font-size: 1.3em;
     padding-bottom: 15px;
