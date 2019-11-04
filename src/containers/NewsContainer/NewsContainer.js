@@ -4,7 +4,9 @@ import { bindActionCreators } from 'redux';
 import { chooseCountry, setNewsData } from '../../actions/index';
 import { getNewsData } from '../../apiCalls';
 import CardContainer from '../CardContainer/CardContainer';
-import './NewsContainer.scss'
+import './NewsContainer.scss';
+import { PropTypes } from 'prop-types';
+
 
 export class  NewsContainer extends Component {
     constructor() {
@@ -132,3 +134,13 @@ export const mapDispatchToProps = dispatch => (
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer);
+
+NewsContainer.propTypes = {
+    chooseCountry: PropTypes.func,
+    setNewsData: PropTypes.func,
+    countryOptions: PropTypes.string,
+    nav: PropTypes.string,
+    favorites: PropTypes.array,
+    completed: PropTypes.array,
+    newsData: PropTypes.array
+}

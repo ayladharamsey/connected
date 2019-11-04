@@ -79,6 +79,6 @@ describe('cleanNewsData', () => {
             countryCode: 'da'
             }
             
-            expect(getNewsData()).resolves.toEqual(receivedData)
+            expect(getNewsData(allData)).resolves.toEqual(receivedData)
     })
 })

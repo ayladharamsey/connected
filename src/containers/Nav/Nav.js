@@ -4,6 +4,8 @@ import './Nav.scss';
 import feed from '../../images/edited/newsfeed-white.png';
 import clock from '../../images/edited/clock-white.png';
 import check from '../../images/edited/check-white.png';
+import { PropTypes } from 'prop-types';
+
 
 export const Nav = ({ filterByNav }) => {
     
@@ -35,3 +37,6 @@ export const Nav = ({ filterByNav }) => {
     )
 }
 
+Nav.propTypes = {
+    filterByNav: PropTypes.func
+}

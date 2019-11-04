@@ -96,7 +96,6 @@ export class App extends Component {
 
 export const mapStateToProps = state => ({
   error: state.errorReducer,
-  language: state.langReducer,
   isLoading: state.loadingReducer,
   country: state.countryReducer,
 })

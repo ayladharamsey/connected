@@ -10,8 +10,18 @@ describe('NewsArticle', () => {
         content: 'I am super cool'
         
     }
+
+    beforeEach(() => {
+        wrapper = shallow(<NewsArticle chosenArticle={chosenArticle}/>)
+    })
     
     it('should match the snapshot', () => {
-        wrapper = shallow(<NewsArticle chosenArticle={chosenArticle}/>)
+        expect(wrapper).toMatchSnapshot();
+    })
+
+    it('should open up a new window with the source article upon click', () => {
+        global.open = jest.fn()
+        wrapper.find('button').simulate('click')
+        expect(global.open).toHaveBeenCalled()
     })
 })
