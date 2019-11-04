@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 import { Nav } from '../Nav/Nav';
 import NewsContainer from '../NewsContainer/NewsContainer';
+import NewsArticle from '../NewsArticle/NewsArticle';
 import './App.scss'
 
 class App extends Component {
@@ -40,11 +41,13 @@ class App extends Component {
       selectNav('live')
     }
   }
+  
 
   render() {
     return (
       <main>
         <Route
+          exact
           path = "/"
           render = {() => {
             return (
@@ -55,7 +58,7 @@ class App extends Component {
             )
           }}
         />
-        <Route
+        <Route  
           path = "/saved"
           render = {() => {
             return (
@@ -66,7 +69,8 @@ class App extends Component {
             )
           }}
         />
-        <Route
+        <Route 
+          exact 
           path = "/read"
           render = {() => {
             return (
@@ -76,7 +80,15 @@ class App extends Component {
               </>
             )
           }}
-        />
+          />
+        <Route exact path = "/article/:id/" render={() => {
+          return (
+            <>
+              <Nav filterByNav={this.filterByNav}/>
+              <NewsArticle/>
+            </>
+          )
+        }}/>
       </main>
     )
   }

@@ -6,7 +6,7 @@ import './CardContainer.scss'
 
 export const CardContainer = ({ column, newsData }) => {
     const card = newsData.map(article => {
-        return  <NewsCard 
+          return <NewsCard 
             key={article.id}
             id={article.id}
             author={article.author}
@@ -22,10 +22,11 @@ export const CardContainer = ({ column, newsData }) => {
             isSavedForLater={article.isSavedForLater}
             column={column}
         />
-    })
+    }) 
+
     return (
         <section className="card-container">
-            {card}
+            {newsData.length > 0 ? card : <h5>Select a country to see news.</h5>}
         </section>
     )
 }
