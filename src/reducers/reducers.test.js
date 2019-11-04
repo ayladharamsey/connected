@@ -364,21 +364,74 @@ describe('newsDataReducer', () => {
     });
 })
 
-// describe('readReducer', () => {
+describe('readReducer', () => {
     
-//     it('should return the initial state', () => {
-//         const expected = '';
-//         const result = readReducer(undefined, {});
-//         expect(result).toEqual(expected);
-//       });
+    it('should return the initial state', () => {
+        const expected = [];
+        const result = readReducer(undefined, {});
+        expect(result).toEqual(expected);
+      });
 
-//     it('should return a navName when the type is SELECT_NAV', () => {
-//         const navName = 'live'
-//         const mockAction = {
-//             type: 'SELECT_NAV', 
-//             navName
-//         };
-//         const result = readReducer('', mockAction);
-//         expect(result).toEqual(navName);
-//     });
-// })
+    it('should remove an article from state when the type is UNREAD_ARTICLE', () => {
+        const article = {
+            author:null,
+            title:"second example",
+            content:"Words.",
+            description:null,
+            url:"cool.com",
+            urlToImage:"cooler.com",
+            publishedAt:"2019-11-04T05:10:00Z",
+            id:1,
+            countryCode:"at",
+            isRead: true
+        }
+
+        const mockState = [
+            {
+                author: 'Lemon',
+                title:"Nachfolger John Bercows wird gewählt - derStandard.at",
+                content:"Ich stimme der Verwendung von Cookies für die Zwecke der Webanalyse und digitaler Werbemaßnahmen zu. Auch wenn ich diese Website weiter nutze, gilt dies als Zustimmung. Meine Einwilligung kann ich hier widerrufen.",
+                description:null,
+                url:"https://www.derstandard.de/story/2000110638480/nachfolger-john-bercows-wird-gewaehlt",
+                urlToImage:"https://at.staticfiles.at/img/meta/meta_image_1200x630-4d0796cf00.png",
+                publishedAt:"2019-11-04T05:10:00Z",
+                id:0,
+                countryCode:"at",
+                isRead: true
+            }, 
+            {
+                author:null,
+                title:"second example",
+                content:"Words.",
+                description:null,
+                url:"cool.com",
+                urlToImage:"cooler.com",
+                publishedAt:"2019-11-04T05:10:00Z",
+                id:1,
+                countryCode:"at",
+                isRead: true
+
+        }
+    ]
+
+    const expected = {
+        author:null,
+        title:"second example",
+        content:"Words.",
+        description:null,
+        url:"cool.com",
+        urlToImage:"cooler.com",
+        publishedAt:"2019-11-04T05:10:00Z",
+        id:1,
+        countryCode:"at",
+        isRead: false
+    }
+
+        const mockAction = {
+            type: 'UNREAD_ARTICLE', 
+            article
+        };
+        const result = readReducer(mockState, mockAction);
+        expect(result).toEqual([expected]);
+    });
+})
