@@ -15,7 +15,7 @@ import NewsContainer from '../NewsContainer/NewsContainer';
 import NewsArticle from '../NewsArticle/NewsArticle';
 import './App.scss'
 
-class App extends Component {
+export class App extends Component {
 
    componentDidMount= async () => {
      const { setLoader, setNewsData, hasError } = this.props;
