@@ -10,13 +10,20 @@ import {
     let wrapper; 
     const filterByNav = jest.fn();
     
-    it('should match the snapshot', () => {
-        wrapper = shallow(<NewsContainer 
-        filterByNav={filterByNav}
-        />)
+    beforeEach(() => {
+      wrapper = shallow(<NewsContainer filterByNav={filterByNav} />)
+    }); 
 
+    it('should match the snapshot', () => {
         expect(wrapper).toMatchSnapshot();
-    })
+    });
+
+    it('should update state with a chosen country', () => {
+      const mockEvent = {
+        target: { name: 'mom', value: 'rules'}
+      }
+      wrapper.instance().
+  });
 
 })
 
