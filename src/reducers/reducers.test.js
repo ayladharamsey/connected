@@ -227,3 +227,48 @@ describe('navReducer', () => {
         expect(result).toEqual(navName);
     });
 })
+
+describe('newsDataReducer', () => {
+    
+    it('should return the initial state', () => {
+        const expected = [];
+        const result = newsDataReducer(undefined, {});
+        expect(result).toEqual(expected);
+      });
+
+    it('should return a navName when the type is SET_DATA', () => {
+        const data = [
+            {
+                author: 'Lemon',
+                title:"Nachfolger John Bercows wird gewählt - derStandard.at",
+                content:"Ich stimme der Verwendung von Cookies für die Zwecke der Webanalyse und digitaler Werbemaßnahmen zu. Auch wenn ich diese Website weiter nutze, gilt dies als Zustimmung. Meine Einwilligung kann ich hier widerrufen.",
+                description:null,
+                url:"https://www.derstandard.de/story/2000110638480/nachfolger-john-bercows-wird-gewaehlt",
+                urlToImage:"https://at.staticfiles.at/img/meta/meta_image_1200x630-4d0796cf00.png",
+                publishedAt:"2019-11-04T05:10:00Z",
+                id:0,
+                countryCode:"at",
+                isSavedForLater: true
+            }, 
+            {
+                author:null,
+                title:"second example",
+                content:"Words.",
+                description:null,
+                url:"cool.com",
+                urlToImage:"cooler.com",
+                publishedAt:"2019-11-04T05:10:00Z",
+                id:1,
+                countryCode:"at",
+                isSavedForLater: true
+
+        }
+    ]
+        const mockAction = {
+            type: 'SET_DATA', 
+            data
+        };
+        const result = newsDataReducer([], mockAction);
+        expect(result).toEqual(data);
+    });
+})
