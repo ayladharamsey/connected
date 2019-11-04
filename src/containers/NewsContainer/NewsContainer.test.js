@@ -10,13 +10,31 @@ import {
     let wrapper; 
     const filterByNav = jest.fn();
     
-    it('should match the snapshot', () => {
-        wrapper = shallow(<NewsContainer 
-        filterByNav={filterByNav}
-        />)
+    beforeEach(() => {
+      wrapper = shallow(<NewsContainer filterByNav={filterByNav} />)
+    }); 
 
+    it('should match the snapshot', () => {
         expect(wrapper).toMatchSnapshot();
-    })
+    });
+
+    it('should update state with a chosen country', () => {
+      const mockEvent = {
+        target: { name: 'firstCountry', value: 'Lithuania'}
+      }
+      expect(wrapper.state('firstCountry')).toEqual('');
+      wrapper.instance().updateCountry(mockEvent);
+      expect(wrapper.state('firstCountry')).toEqual('Lithuania');
+    });
+
+    it.skip('should filter the news data and update state', () => {
+      const data =[{}, {}, {}]
+      const setNewsData = jest.fn();
+      wrapper.find('button').simulate('click');
+      wrapper.instance().filterNewsData();
+      expect(wrapper.state('firstCountryData')).toEqual(data);
+      expect(setNewsData).toHaveBeenCalledWith(data)
+    });
 
 })
 

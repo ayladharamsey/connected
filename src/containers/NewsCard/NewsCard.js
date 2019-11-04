@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { saveArticle, unsaveArticle, readArticle, unreadArticle, chooseArticle } from '../../actions/index';
 import './NewsCard.scss';
-import go from '../../images/edited/outsource.png';
 import save from '../../images/edited/clock-active.png';
 import unsave from '../../images/edited/clock-inactive.png';
 import read from '../../images/edited/check-active.png';
@@ -50,19 +49,12 @@ export class NewsCard extends Component {
         return (
             <section id={id} key={id} className="card"> 
                 <div className="top">
-                    <h4>{title}</h4>
+                <Link to={`/article/${id}`} onClick={() => chooseArticle(id, column, data)}>;
+                    <h4 className="title">{title}</h4>
+                </Link>
+
                 </div>
                 <p>{content}</p>
-                <div className="bottom">
-                    <div className="left">
-                            <Link to={`/article/${id}`} onClick={() => chooseArticle(id, column, data)}>;
-                                <img 
-                                alt='opens link to article'
-                                src={go}
-                                className='go'
-                                />
-                            </Link>
-                    </div>
                     <div className="right">
                         <img
                             className='saveBtn'
@@ -75,7 +67,6 @@ export class NewsCard extends Component {
                             src={ isRead ? read : unread }
                         />
                     </div>
-                </div>
             </section>
        )
     }  
