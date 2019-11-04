@@ -3,6 +3,12 @@ export const selectNav = navName => ({
     navName
 });
 
+export const flipFaveBool = (id, column) => ({
+    type: 'FLIP_FAVE',
+    id,
+    column
+});
+
 export const saveArticle = article => ({
     type: 'SAVE_ARTICLE',
     article

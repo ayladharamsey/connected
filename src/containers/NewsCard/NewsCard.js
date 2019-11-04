@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { saveArticle, unsaveArticle, readArticle, unreadArticle } from '../../actions/index';
+import { saveArticle, unsaveArticle, readArticle, unreadArticle, flipFaveBool } from '../../actions/index';
 import './NewsCard.scss';
 import clock from '../../images/edited/outsource.png';
 import save from '../../images/edited/clock-active.png';
@@ -22,16 +22,17 @@ class NewsCard extends Component {
         return window.open(url)
     }
 
-    toggleSaveArticle = async(article, country, column) => {
-        const { data } = this.props;
+    toggleSaveArticle = async (article, country, column) => {
+        const { data, saveArticle, flipFaveBool } = this.props;
         let currentState = this.state.isSavedForLater;
         await this.setState({
             isSavedForLater: !currentState
         })
         const foundCountry = data.find(info => info[0].countryCode === country);
         let foundArticle = foundCountry.find(info => info.id === article.id);
-        foundArticle.column = column
-        this.state.isSavedForLater ? this.props.saveArticle(foundArticle) : this.props.unsaveArticle(foundArticle);
+        foundArticle.column = column;
+        flipFaveBool(article.id, column);
+        this.state.isSavedForLater ? saveArticle(foundArticle) : unsaveArticle(foundArticle);
     }
 
     toggleCompleteArticle = async (article, country, column) => {
@@ -47,8 +48,7 @@ class NewsCard extends Component {
     }
      
     render() {
-        const {id, title, content, url, country, column} = this.props;
-
+        const {id, title, content, url, country, column, isSavedForLater } = this.props;
         return (
             <section id={id} key={id} className="card"> 
                 <div className="top">
@@ -68,7 +68,7 @@ class NewsCard extends Component {
                         <img
                             className='saveBtn'
                             onClick={() => this.toggleSaveArticle(this.props, country, column)}
-                            src={this.state.isSavedForLater ? save : unsave }
+                            src={isSavedForLater ? save : unsave }
                         />
                         <img 
                             className='completeBtn' 
@@ -91,7 +91,8 @@ export const mapDispatchToProps = dispatch => (
       saveArticle,
       unsaveArticle,
       readArticle,
-      unreadArticle
+      unreadArticle, 
+      flipFaveBool
     }, dispatch)
   )
 
