@@ -1,4 +1,4 @@
-export const getNewsData = async (countryCode) => {
+export const getNewsData = async (countryCode = 'us') => {
     const apiKey = 'e5c18cb797134ce790544a6248eca1e7'
     const url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=${apiKey}`;
     const response = await fetch(url);
