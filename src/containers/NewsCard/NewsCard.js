@@ -50,19 +50,20 @@ export class NewsCard extends Component {
         return (
             <section id={id} key={id} className="card"> 
                 <div className="top">
+                <Link to={`/article/${id}`} onClick={() => chooseArticle(id, column, data)}>;
                     <h4>{title}</h4>
+                </Link>
+
                 </div>
                 <p>{content}</p>
                 <div className="bottom">
-                    <div className="left">
-                            <Link to={`/article/${id}`} onClick={() => chooseArticle(id, column, data)}>;
+                    {/* <div className="left">
                                 <img 
                                 alt='opens link to article'
                                 src={go}
                                 className='go'
                                 />
-                            </Link>
-                    </div>
+                    </div> */}
                     <div className="right">
                         <img
                             className='saveBtn'
