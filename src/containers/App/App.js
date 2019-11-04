@@ -55,27 +55,9 @@ class App extends Component {
             )
           }}
         />
-        <Route
-          path = "/saved"
-          render = {() => {
-            return (
-              <>
-                <Nav filterByNav={this.filterByNav}/>
-                <NewsContainer />
-              </>
-            )
-          }}
+        <Route path = "/saved"
         />
-        <Route
-          path = "/read"
-          render = {() => {
-            return (
-              <>
-                <Nav filterByNav={this.filterByNav}/>
-                <NewsContainer />
-              </>
-            )
-          }}
+        <Route path = "/read"
         />
       </main>
     )

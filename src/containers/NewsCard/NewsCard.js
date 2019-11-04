@@ -23,7 +23,7 @@ class NewsCard extends Component {
     }
 
     toggleSaveArticle = async (article, country, column) => {
-        const { data } = this.props;
+        const { data, saveArticle } = this.props;
         let currentState = this.state.isSavedForLater;
         await this.setState({
             isSavedForLater: !currentState
@@ -31,11 +31,11 @@ class NewsCard extends Component {
         const foundCountry = data.find(info => info[0].countryCode === country);
         let foundArticle = foundCountry.find(info => info.id === article.id);
         foundArticle.column = column
-        this.state.isSavedForLater ? this.props.saveArticle(foundArticle) : this.props.unsaveArticle(foundArticle);
+        this.state.isSavedForLater ? saveArticle(foundArticle) : unsaveArticle(foundArticle);
     }
 
     toggleCompleteArticle = async (article, country, column) => {
-        const { data } = this.props;
+        const { data, readArticle } = this.props;
         let currentState = this.state.isRead;
         await this.setState({
             isRead: !currentState
@@ -43,11 +43,11 @@ class NewsCard extends Component {
         const foundCountry = data.find(info => info[0].countryCode === country);
         let foundArticle = foundCountry.find(info => info.id === article.id);
         foundArticle.column = column
-        this.state.isRead ? this.props.readArticle(foundArticle) : this.props.unreadArticle(foundArticle);
+        this.state.isRead ? readArticle(foundArticle) : unreadArticle(foundArticle);
     }
      
     render() {
-        const {id, title, author, content, url, country, column } = this.props;
+        const {id, title, content, url, country, column, isSavedForLater, isRead } = this.props;
         return (
             <section id={id} key={id} className="card"> 
                 <div className="top">
@@ -67,12 +67,12 @@ class NewsCard extends Component {
                         <img
                             className='saveBtn'
                             onClick={() => this.toggleSaveArticle(this.props, country, column)}
-                            src={this.state.isSavedForLater ? save : unsave }
+                            src={ isSavedForLater ? save : unsave }
                         />
                         <img 
                             className='completeBtn' 
                             onClick={() => this.toggleCompleteArticle(this.props, country, column)}
-                            src={this.state.isRead ? read : unread }
+                            src={ isRead ? read : unread }
                         />
                     </div>
                 </div>
