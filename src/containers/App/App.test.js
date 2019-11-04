@@ -23,18 +23,16 @@ describe('App', () => {
 })
 
 describe('MapStateToProps', () => {
-  it('should return error, language, is loading, and country', () => {
-    let error, language, isLoading, country;
+  it('should return error, isLoading, and country', () => {
+    let error, isLoading, country;
     let mockState = {
       error,
-      language, 
       isLoading,
       country
     }
 
     let expected = {
       error,
-      language, 
       isLoading,
       country
     }
@@ -115,4 +113,21 @@ describe('MapDispatchToProps', () => {
   
       expect(mockDispatchedAction).toHaveBeenCalledWith(mockAction);
     });
+})
+
+describe('filterByNav', () => {
+  const selectNav = jest.fn();
+  const mockEvent = {
+    target: {name: 'live feed', value: 'live'}
+  }
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<App />)
+  })
+
+  it.skip('should call the selectNav action if a navigation item is selected', () => {
+    wrapper.instance().filterByNav(mockEvent);
+    expect(selectNav).toHaveBeenCalledWith('live')
+  })
 })
