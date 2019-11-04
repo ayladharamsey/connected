@@ -23,11 +23,6 @@ export const unreadArticle = article => ({
     article
 });
 
-export const updateLanguage = lang => ({
-    type: 'CHOOSE_LANGUAGE',
-    lang
-});
-
 export const setLoader = bool => ({
     type: 'SET_LOADER',
     bool
@@ -49,7 +44,7 @@ export const chooseCountry = chosenCountry => ({
 });
 
 export const chooseArticle = (column, id, data) => ({
-    type : 'CHOOSE_ARTICLE',
+    type: 'CHOOSE_ARTICLE',
     column,
     id,
     data

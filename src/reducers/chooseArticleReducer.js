@@ -1,4 +1,4 @@
-export const chooseArticleReducer = (state = [], action) => {
+export const chooseArticleReducer = (state = {} , action) => {
     switch(action.type) {
         case 'CHOOSE_ARTICLE':
             let country = action.data[action.column]
