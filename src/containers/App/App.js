@@ -58,9 +58,37 @@ class App extends Component {
             )
           }}
         />
-        <Route exact path = "/saved"/>
-        <Route exact path = "/read"/>
-        <Route exact path = "/article/:id/" render={() => <NewsArticle/>}/>
+        <Route  
+          path = "/saved"
+          render = {() => {
+            return (
+              <>
+                <Nav filterByNav={this.filterByNav}/>
+                <NewsContainer />
+              </>
+            )
+          }}
+        />
+        <Route 
+          exact 
+          path = "/read"
+          render = {() => {
+            return (
+              <>
+                <Nav filterByNav={this.filterByNav}/>
+                <NewsContainer />
+              </>
+            )
+          }}
+          />
+        <Route exact path = "/article/:id/" render={() => {
+          return (
+            <>
+              <Nav filterByNav={this.filterByNav}/>
+              <NewsArticle/>
+            </>
+          )
+        }}/>
       </main>
     )
   }
