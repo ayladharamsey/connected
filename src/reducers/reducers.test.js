@@ -42,12 +42,14 @@ describe('chooseArticleReducer', () => {
                 countryCode:"at"
             }
         ]
+
         const mockAction = {
             type: 'CHOOSE_ARTICLE', 
             column: column,
             id: id,
             data: data
         };
+
         const mockArticle = {
             author:null,
             title:"second example",
@@ -61,7 +63,27 @@ describe('chooseArticleReducer', () => {
         }
 
         const result = chooseArticleReducer({}, mockAction);
-        expect(result).toEqual(mockArticle); // result is coming back undefined and idk why
+        expect(result).toEqual(mockArticle); 
       });
 
+})
+
+
+describe('countryReducer', () => {
+    
+    it('should return the initial state', () => {
+        const expected = '';
+        const result = countryReducer(undefined, {});
+        expect(result).toEqual(expected);
+      });
+
+    it('should return a country when the type is CHOOSE_COUNTRY', () => {
+        const chosenCountry = 'us'
+        const mockAction = {
+            type: 'CHOOSE_COUNTRY', 
+            chosenCountry
+        };
+        const result = countryReducer('', mockAction);
+        expect(result).toEqual(chosenCountry);
+    });
 })
