@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class NewsArticle extends Component {
+export class NewsArticle extends Component {
     
     goToSource = (url) => {
         window.open(url)
