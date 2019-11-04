@@ -21,7 +21,6 @@ class NewsCard extends Component {
 
     goToLink = (id, column, data) => {
         const { chooseArticle } = this.props;
-        chooseArticle(id, column, data);
     }
 
     toggleSaveArticle = async (article, country, column) => {
@@ -49,7 +48,7 @@ class NewsCard extends Component {
     }
      
     render() {
-        const {id, title, content, country, column, isSavedForLater, isRead, data } = this.props;
+        const {id, title, content, country, column, isSavedForLater, isRead, data, chooseArticle } = this.props;
         return (
             <section id={id} key={id} className="card"> 
                 <div className="top">
@@ -58,7 +57,7 @@ class NewsCard extends Component {
                 <p>{content}</p>
                 <div className="bottom">
                     <div className="left">
-                            <Link to={`/article/${id}`} onClick={() => this.goToLink(id, column, data)}>
+                            <Link to={`/article/${id}`} onClick={() => chooseArticle(id, column, data)}>;
                                 <img 
                                 alt='opens link to article'
                                 src={go}

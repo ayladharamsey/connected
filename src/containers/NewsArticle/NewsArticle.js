@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class NewsArticle extends Component {
     
+    goToSource = (url) => {
+        window.open(url)
+    }
+
     render() {
         const {chosenArticle} = this.props;
         return (
@@ -11,7 +14,7 @@ class NewsArticle extends Component {
                 <h2>{chosenArticle.title}</h2>
                 <h3>{chosenArticle.author}</h3>
                  <p>{chosenArticle.content}</p>
-                <Link to={chosenArticle.url}><button>View Original Article</button></Link>
+                <button onClick={() => this.goToSource(chosenArticle.url)}>View Original Article</button>
              </section>
             )
     }

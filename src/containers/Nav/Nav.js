@@ -35,5 +35,3 @@ export const Nav = ({ filterByNav }) => {
     )
 }
 
-// might want to add filters here -- how do i bring in the language filters & country filters 
-// into a select dropdown  

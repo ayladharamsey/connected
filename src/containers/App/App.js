@@ -58,8 +58,8 @@ class App extends Component {
             )
           }}
         />
-        <Route path = "/saved"/>
-        <Route path = "/read"/>
+        <Route exact path = "/saved"/>
+        <Route exact path = "/read"/>
         <Route exact path = "/article/:id/" render={() => <NewsArticle/>}/>
       </main>
     )
