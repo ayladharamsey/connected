@@ -1,7 +1,7 @@
 export const errorReducer = (state ='', action) => {
     switch(action.type) {
-        case 'SET_LOADER':
-            return action.bool;
+        case 'HAS_ERROR':
+            return action.error;
         default: 
             return state;
     }

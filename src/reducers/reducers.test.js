@@ -86,4 +86,97 @@ describe('countryReducer', () => {
         const result = countryReducer('', mockAction);
         expect(result).toEqual(chosenCountry);
     });
+});
+
+describe('errorReducer', () => {
+    
+    it('should return the initial state', () => {
+        const expected = '';
+        const result = errorReducer(undefined, {});
+        expect(result).toEqual(expected);
+      });
+
+    it('should return a boolean when the type is HAS_ERROR', () => {
+        const error = 'you messed up bro'
+        const mockAction = {
+            type: 'HAS_ERROR', 
+            error
+        };
+        const result = errorReducer('', mockAction);
+        expect(result).toEqual(error);
+    });
+})
+
+describe('favoriteReducer', () => {
+    
+    it('should return the initial state', () => {
+        const expected = [];
+        const result = favoriteReducer(undefined, {});
+        expect(result).toEqual(expected);
+      });
+
+    it('should return remove the article from state when the type is UNSAVE_ARTICLE', () => {
+        
+        const article = {
+            author:null,
+            title:"second example",
+            content:"Words.",
+            description:null,
+            url:"cool.com",
+            urlToImage:"cooler.com",
+            publishedAt:"2019-11-04T05:10:00Z",
+            id:1,
+            countryCode:"at",
+            isSavedForLater: true
+        }
+
+        const mockState = [
+            {
+                author: 'Lemon',
+                title:"Nachfolger John Bercows wird gewählt - derStandard.at",
+                content:"Ich stimme der Verwendung von Cookies für die Zwecke der Webanalyse und digitaler Werbemaßnahmen zu. Auch wenn ich diese Website weiter nutze, gilt dies als Zustimmung. Meine Einwilligung kann ich hier widerrufen.",
+                description:null,
+                url:"https://www.derstandard.de/story/2000110638480/nachfolger-john-bercows-wird-gewaehlt",
+                urlToImage:"https://at.staticfiles.at/img/meta/meta_image_1200x630-4d0796cf00.png",
+                publishedAt:"2019-11-04T05:10:00Z",
+                id:0,
+                countryCode:"at",
+                isSavedForLater: true
+            }, 
+            {
+                author:null,
+                title:"second example",
+                content:"Words.",
+                description:null,
+                url:"cool.com",
+                urlToImage:"cooler.com",
+                publishedAt:"2019-11-04T05:10:00Z",
+                id:1,
+                countryCode:"at",
+                isSavedForLater: true
+
+        }
+    ]
+
+        const expected = {
+            author:null,
+            title:"second example",
+            content:"Words.",
+            description:null,
+            url:"cool.com",
+            urlToImage:"cooler.com",
+            publishedAt:"2019-11-04T05:10:00Z",
+            id:1,
+            countryCode:"at",
+            isSavedForLater: false
+
+        }
+
+        const mockAction = {
+            type: 'UNSAVE_ARTICLE', 
+            article
+        };
+        const result = favoriteReducer(mockState, mockAction);
+        expect(result).toEqual([expected]);
+    });
 })
