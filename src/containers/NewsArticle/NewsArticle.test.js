@@ -13,5 +13,6 @@ describe('NewsArticle', () => {
     
     it('should match the snapshot', () => {
         wrapper = shallow(<NewsArticle chosenArticle={chosenArticle}/>)
+        expect(wrapper).toMatchSnapshot();
     })
 })

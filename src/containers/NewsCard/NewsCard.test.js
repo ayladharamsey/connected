@@ -5,7 +5,11 @@ import { NewsCard, mapStateToProps, mapDispatchToProps } from './NewsCard';
 describe('NewsCard', () => {
     let wrapper;
 
-    it('should match the snapshot', () => {
+    beforeEach(() => {
         wrapper=shallow(<NewsCard />)
+    })
+
+    it('should match the snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
     })
 })

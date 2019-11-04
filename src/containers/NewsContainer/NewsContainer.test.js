@@ -14,6 +14,8 @@ import {
         wrapper = shallow(<NewsContainer 
         filterByNav={filterByNav}
         />)
+
+        expect(wrapper).toMatchSnapshot();
     })
 
   })
