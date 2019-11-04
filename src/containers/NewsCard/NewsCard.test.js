@@ -12,4 +12,6 @@ describe('NewsCard', () => {
     it('should match the snapshot', () => {
         expect(wrapper).toMatchSnapshot();
     })
+
+    
 })

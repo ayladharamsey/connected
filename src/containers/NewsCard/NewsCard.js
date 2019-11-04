@@ -9,6 +9,8 @@ import unsave from '../../images/edited/clock-inactive.png';
 import read from '../../images/edited/check-active.png';
 import unread from '../../images/edited/check-inactive.png';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
+
 
 export class NewsCard extends Component {
     constructor() {
@@ -17,10 +19,6 @@ export class NewsCard extends Component {
             isSavedForLater: false,
             isRead: false
         }
-    }
-
-    goToLink = (id, column, data) => {
-        const { chooseArticle } = this.props;
     }
 
     toggleSaveArticle = async (article, country, column) => {
@@ -99,4 +97,11 @@ export const mapDispatchToProps = dispatch => (
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsCard);
 
-//add propTypes
+NewsCard.propTypes= {
+    data: PropTypes.array,
+    saveArticle: PropTypes.func,
+    unsaveArticle: PropTypes.func,
+    readArticle: PropTypes.func,
+    unreadArticle: PropTypes.func,
+    chooseArticle: PropTypes.func
+}

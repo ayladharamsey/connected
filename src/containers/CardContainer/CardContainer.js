@@ -43,5 +43,8 @@ export default connect(mapStateToProps, null)(CardContainer);
 
 CardContainer.propTypes = {
     column: PropTypes.number,
-    newsData: PropTypes.array
+    newsData: PropTypes.array,
+    nav: PropTypes.string,
+    favorites: PropTypes.array,
+    completed: PropTypes.array
 }
