@@ -20,10 +20,21 @@ import {
 
     it('should update state with a chosen country', () => {
       const mockEvent = {
-        target: { name: 'mom', value: 'rules'}
+        target: { name: 'firstCountry', value: 'Lithuania'}
       }
-      wrapper.instance().
-  });
+      expect(wrapper.state('firstCountry')).toEqual('');
+      wrapper.instance().updateCountry(mockEvent);
+      expect(wrapper.state('firstCountry')).toEqual('Lithuania');
+    });
+
+    it.skip('should filter the news data and update state', () => {
+      const data =[{}, {}, {}]
+      const setNewsData = jest.fn();
+      wrapper.find('button').simulate('click');
+      wrapper.instance().filterNewsData();
+      expect(wrapper.state('firstCountryData')).toEqual(data);
+      expect(setNewsData).toHaveBeenCalledWith(data)
+    });
 
 })
 

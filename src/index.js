@@ -7,7 +7,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from '../src/containers/App/App';
-import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
@@ -20,4 +19,3 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-serviceWorker.unregister();
