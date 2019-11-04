@@ -10,7 +10,7 @@ import read from '../../images/edited/check-active.png';
 import unread from '../../images/edited/check-inactive.png';
 import { Link } from 'react-router-dom';
 
-class NewsCard extends Component {
+export class NewsCard extends Component {
     constructor() {
         super();
         this.state = {
