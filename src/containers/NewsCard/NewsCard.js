@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { saveArticle, unsaveArticle, readArticle, unreadArticle } from '../../actions/index';
+import { saveArticle, unsaveArticle, readArticle, unreadArticle, chooseArticle } from '../../actions/index';
 import './NewsCard.scss';
-import clock from '../../images/edited/outsource.png';
+import go from '../../images/edited/outsource.png';
 import save from '../../images/edited/clock-active.png';
 import unsave from '../../images/edited/clock-inactive.png';
 import read from '../../images/edited/check-active.png';
 import unread from '../../images/edited/check-inactive.png';
+import { Link } from 'react-router-dom';
 
 class NewsCard extends Component {
     constructor() {
@@ -18,8 +19,9 @@ class NewsCard extends Component {
         }
     }
 
-    goToLink = (url) => {
-        return window.open(url)
+    goToLink = (id, column, data) => {
+        const { chooseArticle } = this.props;
+        chooseArticle(id, column, data);
     }
 
     toggleSaveArticle = async (article, country, column) => {
@@ -47,7 +49,7 @@ class NewsCard extends Component {
     }
      
     render() {
-        const {id, title, content, url, country, column, isSavedForLater, isRead } = this.props;
+        const {id, title, content, country, column, isSavedForLater, isRead, data } = this.props;
         return (
             <section id={id} key={id} className="card"> 
                 <div className="top">
@@ -56,12 +58,13 @@ class NewsCard extends Component {
                 <p>{content}</p>
                 <div className="bottom">
                     <div className="left">
-                            <img 
-                            onClick={() => this.goToLink(url)} 
-                            alt='opens link to article'
-                            src={clock}
-                            className='clock'
-                            />
+                            <Link to={`/article/${id}`} onClick={() => this.goToLink(id, column, data)}>
+                                <img 
+                                alt='opens link to article'
+                                src={go}
+                                className='go'
+                                />
+                            </Link>
                     </div>
                     <div className="right">
                         <img
@@ -90,7 +93,8 @@ export const mapDispatchToProps = dispatch => (
       saveArticle,
       unsaveArticle,
       readArticle,
-      unreadArticle
+      unreadArticle,
+      chooseArticle
     }, dispatch)
   )
 
