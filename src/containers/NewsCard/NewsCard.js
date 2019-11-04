@@ -56,14 +56,6 @@ export class NewsCard extends Component {
 
                 </div>
                 <p>{content}</p>
-                <div className="bottom">
-                    {/* <div className="left">
-                                <img 
-                                alt='opens link to article'
-                                src={go}
-                                className='go'
-                                />
-                    </div> */}
                     <div className="right">
                         <img
                             className='saveBtn'
@@ -76,7 +68,6 @@ export class NewsCard extends Component {
                             src={ isRead ? read : unread }
                         />
                     </div>
-                </div>
             </section>
        )
     }  
