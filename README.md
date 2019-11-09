@@ -1,6 +1,7 @@
 # Connected 
 
 Connected is a news dashboard that allows you to customize the countries that you receive news about. 
+
 To view, please clone down the repo, run NPM start, and enjoy! 
 
 ## Tech Stack: 
