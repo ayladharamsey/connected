@@ -10,7 +10,7 @@ import {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
-import { Nav } from '../Nav/Nav';
+import { Nav } from '../../components/Nav/Nav';
 import NewsContainer from '../NewsContainer/NewsContainer';
 import NewsArticle from '../NewsArticle/NewsArticle';
 import './App.scss'
